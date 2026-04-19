@@ -18,6 +18,7 @@ public class ModCreativeModeTabs {
         .title(Component.translatable("creativetab.potion_relics_tab"))
         .displayItems((pParameters, pOutput) -> {
             pOutput.accept(ModItems.NIGHTVISIONRELIC.get());
+            pOutput.accept(ModItems.STRENGTHRELIC.get());
         })
         .build()
     );
