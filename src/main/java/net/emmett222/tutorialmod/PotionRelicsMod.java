@@ -1,4 +1,4 @@
-package net.kaupenjoe.tutorialmod;
+package net.emmett222.tutorialmod;
 
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.api.distmarker.Dist;
@@ -14,12 +14,12 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(TutorialMod.MOD_ID)
-public class TutorialMod {
-    public static final String MOD_ID = "tutorialmod";
+@Mod(PotionRelicsMod.MOD_ID)
+public class PotionRelicsMod {
+    public static final String MOD_ID = "potionrelicsmod";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public TutorialMod() {
+    public PotionRelicsMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
