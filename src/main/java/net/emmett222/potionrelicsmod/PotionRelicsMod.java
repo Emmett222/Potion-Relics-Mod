@@ -1,6 +1,9 @@
-package net.emmett222.tutorialmod;
+package net.emmett222.potionrelicsmod;
 
 import com.mojang.logging.LogUtils;
+
+import net.emmett222.potionrelicsmod.items.ModCreativeModeTabs;
+import net.emmett222.potionrelicsmod.items.ModItems;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -21,6 +24,10 @@ public class PotionRelicsMod {
 
     public PotionRelicsMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        
+        ModCreativeModeTabs.register(modEventBus);
+
+        ModItems.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -32,9 +39,12 @@ public class PotionRelicsMod {
 
     }
 
-    // Add the example block item to the building blocks tab
+    /**
+     * Adds items to the creative mode tab.
+     * @param event The event to be used to add the item.
+     */
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
+        
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
