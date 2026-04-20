@@ -23,6 +23,9 @@ public class ModItems {
     
     public static final RegistryObject<Item> INVISIBILITYRELIC = ITEMS.register("invisibilityrelic", 
         () -> new InvisibilityRelic(new Item.Properties()));
+    
+    public static final RegistryObject<Item> ABSORPTIONRELIC = ITEMS.register("absorptionrelic", 
+        () -> new AbsorptionRelic(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
