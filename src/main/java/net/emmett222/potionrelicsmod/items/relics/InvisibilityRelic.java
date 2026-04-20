@@ -12,7 +12,7 @@ public class InvisibilityRelic extends BaseRelic{
 
     /**
      * Explicit constructor.
-     * Sets the effect to Invisibility.
+     * Sets the effect to Invisibility 1 and does not allow offhand upgrading.
      * 
      * @param pProperties The pProperties to be used.
      */

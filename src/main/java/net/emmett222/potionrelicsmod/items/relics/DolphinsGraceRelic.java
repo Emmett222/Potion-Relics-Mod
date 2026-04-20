@@ -12,7 +12,7 @@ public class DolphinsGraceRelic extends BaseRelic{
 
     /**
      * Explicit constructor.
-     * Sets the effect to Night Vision.
+     * Sets the effect to Dolphin's Grace 1 and does not allow offhand upgrading.
      * 
      * @param pProperties The pProperties to be used.
      */

@@ -75,6 +75,11 @@ public abstract class BaseRelic extends Item {
         }
     }
 
+    /**
+     * Adds gold and bold to the relic name.
+     * 
+     * @param pStack Used to getName from super.
+     */
     @Override
     public Component getName(ItemStack pStack) {
         MutableComponent newName = (MutableComponent) super.getName(pStack);
@@ -83,11 +88,23 @@ public abstract class BaseRelic extends Item {
         return newName;
     }
 
+    /**
+     * Makes relic glow as if it is enchanted.
+     * 
+     * @param pStack Unused.
+     */
     @Override
     public boolean isFoil(ItemStack pStack) {
         return true;
     }
 
+    /**
+     * Sets the tooltip and makes it italic.
+     * 
+     * @param pStack The pStack to be used.
+     * @param pLevel the pLevel to be used.
+     * @param pTooltipComponents The pTooltipComponents to be used. Will be updated by this function.
+     */
     @Override
     public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents,
             TooltipFlag pIsAdvanced) {

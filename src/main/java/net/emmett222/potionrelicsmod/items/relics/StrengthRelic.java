@@ -3,7 +3,7 @@ package net.emmett222.potionrelicsmod.items.relics;
 import net.minecraft.world.effect.MobEffects;
 
 /**
- * Night Vision Relic. Gives the player constant night vision if in the inventory.
+ * Strength Relic. Gives the player constant Strength if in the inventory.
  * 
  * @author Emmett Grebe
  * @version 4-19-2026
@@ -12,7 +12,7 @@ public class StrengthRelic extends BaseRelic{
 
     /**
      * Explicit constructor.
-     * Sets the effect to Night Vision.
+     * Sets the effect to Strength 2 and allows offhand upgrading.
      * 
      * @param pProperties The pProperties to be used.
      */
