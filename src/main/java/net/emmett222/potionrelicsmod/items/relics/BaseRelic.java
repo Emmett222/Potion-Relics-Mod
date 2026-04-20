@@ -25,6 +25,7 @@ public abstract class BaseRelic extends Item {
 
     MobEffect effect;
     String tooltip;
+    int amplifier;
 
     /**
      * Explicit constructor.
@@ -32,11 +33,13 @@ public abstract class BaseRelic extends Item {
      * @param pProperties The pProperties to be used.
      * @param effect The effect to be given.
      * @param tooltip The item tooltip to be used.
+     * @param amplifier The level of effect to be used. Effects are 1 less than what they should be.
      */
-    public BaseRelic(Properties pProperties, MobEffect effect, String tooltip) {
+    public BaseRelic(Properties pProperties, MobEffect effect, String tooltip, int amplifier) {
         super(pProperties);
         this.effect = effect;
         this.tooltip = tooltip;
+        this.amplifier = amplifier;
     }
 
     /**
@@ -57,7 +60,7 @@ public abstract class BaseRelic extends Item {
         }
 
         if (pEntity instanceof LivingEntity living) {
-            MobEffectInstance MEI = new MobEffectInstance(effect, 300, 0, true, false);
+            MobEffectInstance MEI = new MobEffectInstance(effect, 300, amplifier, true, false);
             living.addEffect(MEI);
         }
     }
