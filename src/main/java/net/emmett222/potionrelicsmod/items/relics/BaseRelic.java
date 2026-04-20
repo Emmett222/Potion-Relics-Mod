@@ -26,7 +26,7 @@ public abstract class BaseRelic extends Item {
     MobEffect effect;
     String tooltip;
     int amplifier;
-    boolean canUprade;
+    boolean canUpgrade;
     boolean showSwirls;
 
     /**
@@ -65,7 +65,7 @@ public abstract class BaseRelic extends Item {
         }
 
         if (pEntity instanceof LivingEntity living) {
-            if ((pStack == living.getOffhandItem()) && (canUprade)) {
+            if ((pStack == living.getOffhandItem()) && (canUpgrade)) {
                 // If in offhand, give an extra 1 to the amplifier.
                 MobEffectInstance MEI = new MobEffectInstance(effect, 20, amplifier + 1, !showSwirls, showSwirls);
                 living.addEffect(MEI);
