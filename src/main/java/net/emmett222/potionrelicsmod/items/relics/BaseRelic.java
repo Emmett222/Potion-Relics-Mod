@@ -68,15 +68,19 @@ public abstract class BaseRelic extends Item {
         if (pEntity instanceof LivingEntity living) {
             if ((pStack == living.getOffhandItem()) && (canUpgrade)) {
                 // If in offhand, give an extra 1 to the amplifier.
-                if (living.getEffect(effect) != null) return; // If player already has the effect.
+                if (living.getEffect(effect) != null) {
+                    if (living.getEffect(effect).getDuration() > 220) return; // If player already has the effect.
+                }
 
-                MobEffectInstance MEI = new MobEffectInstance(effect, 40, amplifier + 1, !showSwirls, showSwirls);
+                MobEffectInstance MEI = new MobEffectInstance(effect, 280, amplifier + 1, !showSwirls, showSwirls);
                 living.addEffect(MEI);
             } else {
                 // Any other slot, just do amplifier.
-                if (living.getEffect(effect) != null) return; // If player already has the effect.
-                
-                MobEffectInstance MEI = new MobEffectInstance(effect, 40, amplifier, !showSwirls, showSwirls);
+                if (living.getEffect(effect) != null) {
+                    if (living.getEffect(effect).getDuration() > 220) return; // If player already has the effect.
+                }
+
+                MobEffectInstance MEI = new MobEffectInstance(effect, 280, amplifier, !showSwirls, showSwirls);
                 living.addEffect(MEI);
             }
         }
