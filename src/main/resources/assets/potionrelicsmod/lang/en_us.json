@@ -4,12 +4,14 @@
     "item.potionrelicsmod.dolphinsgracerelic": "Relic of Dolphin's Grace",
     "item.potionrelicsmod.invisibilityrelic": "Relic of Invisibility",
     "item.potionrelicsmod.absorptionrelic": "Relic of Absorption",
+    "item.potionrelicsmod.regenerationrelic": "Relic of Regeneration",
 
     "tooltip.potionrelicsmod.nightvisionrelic": "Grants sight even in the darkest of nights.",
     "tooltip.potionrelicsmod.strengthrelic": "Turns you into a one man army.",
     "tooltip.potionrelicsmod.dolphinsgracerelic": "You are accompanied by the soul of a dolphin condensed into gold.",
     "tooltip.potionrelicsmod.invisibilityrelic": "Every cell in your body gains the iridophores of a chameleon.",
     "tooltip.potionrelicsmod.absorptionrelic": "Electrifies your heart to beat twice as fast.",
+    "tooltip.potionrelicsmod.regenerationrelic": "Your wounds heal faster than you can feel their pain.",
 
     "creativetab.potionrelicstab": "Potion Relics"
 }
