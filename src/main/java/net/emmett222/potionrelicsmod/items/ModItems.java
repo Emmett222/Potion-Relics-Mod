@@ -18,6 +18,9 @@ public class ModItems {
     public static final RegistryObject<Item> STRENGTHRELIC = ITEMS.register("strengthrelic", 
         () -> new StrengthRelic(new Item.Properties()));
 
+        public static final RegistryObject<Item> DOLPHINSGRACERELIC = ITEMS.register("dolphinsgracerelic", 
+        () -> new DolphinsGraceRelic(new Item.Properties()));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

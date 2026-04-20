@@ -19,6 +19,7 @@ public class ModCreativeModeTabs {
         .displayItems((pParameters, pOutput) -> {
             pOutput.accept(ModItems.NIGHTVISIONRELIC.get());
             pOutput.accept(ModItems.STRENGTHRELIC.get());
+            pOutput.accept(ModItems.DOLPHINSGRACERELIC.get());
         })
         .build()
     );

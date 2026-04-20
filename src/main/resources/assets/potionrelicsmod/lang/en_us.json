@@ -1,9 +1,11 @@
 {
     "item.potionrelicsmod.nightvisionrelic": "Relic of Night Vision",
     "item.potionrelicsmod.strengthrelic": "Relic of Strength",
+    "item.potionrelicsmod.dolphinsgracerelic": "Relic of Dolphin's Grace",
 
     "tooltip.potionrelicsmod.nightvisionrelic": "Grants sight even in the darkest of nights.",
     "tooltip.potionrelicsmod.strengthrelic": "Turns you into a one man army.",
+    "tooltip.potionrelicsmod.dolphinsgracerelic": "You are accompanied by the soul of a dolphin condensed into gold.",
 
     "creativetab.potionrelicstab": "Potion Relics"
 }
