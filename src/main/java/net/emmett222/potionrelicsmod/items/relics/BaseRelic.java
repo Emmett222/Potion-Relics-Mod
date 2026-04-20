@@ -7,6 +7,7 @@ import org.antlr.v4.Tool;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -62,6 +63,14 @@ public abstract class BaseRelic extends Item {
             MobEffectInstance MEI = new MobEffectInstance(effect, 300, 0, true, false);
             living.addEffect(MEI);
         }
+    }
+
+    @Override
+    public Component getName(ItemStack pStack) {
+        MutableComponent newName = (MutableComponent) super.getName(pStack);
+        newName.withStyle(ChatFormatting.GOLD);
+        newName.withStyle(ChatFormatting.BOLD);
+        return newName;
     }
 
     @Override
