@@ -1,5 +1,12 @@
 package net.emmett222.potionrelicsmod.items.relics;
 
+import java.util.List;
+
+import org.antlr.v4.Tool;
+
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.components.Tooltip;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -7,6 +14,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
 /**
@@ -18,16 +26,19 @@ import net.minecraft.world.level.Level;
 public abstract class BaseRelic extends Item {
 
     MobEffect effect;
+    String tooltip;
 
     /**
      * Explicit constructor.
      * 
      * @param pProperties The pProperties to be used.
      * @param effect The effect to be given.
+     * @param tooltip The item tooltip to be used.
      */
-    public BaseRelic(Properties pProperties, MobEffect effect) {
+    public BaseRelic(Properties pProperties, MobEffect effect, String tooltip) {
         super(pProperties);
         this.effect = effect;
+        this.tooltip = tooltip;
     }
 
     /**
@@ -51,5 +62,15 @@ public abstract class BaseRelic extends Item {
             MobEffectInstance MEI = new MobEffectInstance(effect, 300, 0, true, false);
             living.addEffect(MEI);
         }
+    }
+
+    @Override
+    public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents,
+            TooltipFlag pIsAdvanced) {
+        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+
+        Component desComponent = Component.translatable(tooltip)
+            .withStyle(ChatFormatting.ITALIC);
+        pTooltipComponents.add(desComponent);
     }
 }
