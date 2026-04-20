@@ -27,6 +27,7 @@ public abstract class BaseRelic extends Item {
     String tooltip;
     int amplifier;
     boolean canUprade;
+    boolean showSwirls;
 
     /**
      * Explicit constructor.
@@ -36,12 +37,14 @@ public abstract class BaseRelic extends Item {
      * @param tooltip The item tooltip to be used.
      * @param amplifier The level of effect to be used. Effects are 1 less than what they should be.
      * @param canUprade True if the effect can have extra effect in the offhand, false otherwise.
+     * @param showSwirls True if the relic shows effect swirls, false otherwise.
      */
-    public BaseRelic(Properties pProperties, MobEffect effect, String tooltip, int amplifier, boolean canUprade) {
+    public BaseRelic(Properties pProperties, MobEffect effect, String tooltip, int amplifier, boolean canUprade, boolean showSwirls) {
         super(pProperties);
         this.effect = effect;
         this.tooltip = tooltip;
         this.amplifier = amplifier;
+        this.showSwirls = showSwirls;
     }
 
     /**
@@ -65,11 +68,11 @@ public abstract class BaseRelic extends Item {
         if (pEntity instanceof LivingEntity living) {
             if ((pStack == living.getOffhandItem()) && (canUprade)) {
                 // If in offhand, give an extra 1 to the amplifier.
-                MobEffectInstance MEI = new MobEffectInstance(effect, 20, amplifier + 1, true, false);
+                MobEffectInstance MEI = new MobEffectInstance(effect, 20, amplifier + 1, !showSwirls, showSwirls);
                 living.addEffect(MEI);
             } else {
                 // Any other slot, just do amplifier.
-                MobEffectInstance MEI = new MobEffectInstance(effect, 20, amplifier, true, false);
+                MobEffectInstance MEI = new MobEffectInstance(effect, 20, amplifier, !showSwirls, showSwirls);
                 living.addEffect(MEI);
             }
         }
