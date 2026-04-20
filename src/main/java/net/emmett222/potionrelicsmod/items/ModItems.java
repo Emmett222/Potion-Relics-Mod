@@ -36,6 +36,9 @@ public class ModItems {
     public static final RegistryObject<Item> SWIFTNESSRELIC = ITEMS.register("swiftnessrelic", 
         () -> new SwiftnessRelic(new Item.Properties()));
 
+    public static final RegistryObject<Item> HASTERELIC = ITEMS.register("hasterelic", 
+        () -> new HasteRelic(new Item.Properties()));
+
     public static final RegistryObject<Item> TABICON = ITEMS.register("tabicon", 
         () -> new Item(new Item.Properties().stacksTo(1)));
 
