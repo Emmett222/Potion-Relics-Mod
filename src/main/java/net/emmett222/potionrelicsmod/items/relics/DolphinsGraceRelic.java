@@ -25,11 +25,4 @@ public class DolphinsGraceRelic extends BaseRelic{
     public DolphinsGraceRelic(Properties pProperties) {
         super(pProperties, MobEffects.DOLPHINS_GRACE, "tooltip.potionrelicsmod.dolphinsgracerelic", 0, false);
     }
-
-    @Override
-    public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents,
-            TooltipFlag pIsAdvanced) {
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-    }
-    
 }

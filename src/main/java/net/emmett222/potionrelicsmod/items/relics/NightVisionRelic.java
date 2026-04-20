@@ -24,12 +24,5 @@ public class NightVisionRelic extends BaseRelic{
      */
     public NightVisionRelic(Properties pProperties) {
         super(pProperties, MobEffects.NIGHT_VISION, "tooltip.potionrelicsmod.nightvisionrelic", 0, false);
-    }
-
-    @Override
-    public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents,
-            TooltipFlag pIsAdvanced) {
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-    }
-    
+    }    
 }
