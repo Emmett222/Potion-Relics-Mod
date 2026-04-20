@@ -59,7 +59,6 @@ public abstract class BaseRelic extends Item {
      */
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
-        System.out.println("Item in slot: " + pSlotId + " | Expected Amp: " + (pSlotId == 40 ? amplifier + 1 : amplifier));
         // If the entity is not a player, do nothing to it.
         if (pEntity.getType() != EntityType.PLAYER) {
             return;
