@@ -2,10 +2,12 @@
     "item.potionrelicsmod.nightvisionrelic": "Relic of Night Vision",
     "item.potionrelicsmod.strengthrelic": "Relic of Strength",
     "item.potionrelicsmod.dolphinsgracerelic": "Relic of Dolphin's Grace",
+    "item.potionrelicsmod.invisibilityrelic": "Relic of Invisibility",
 
     "tooltip.potionrelicsmod.nightvisionrelic": "Grants sight even in the darkest of nights.",
     "tooltip.potionrelicsmod.strengthrelic": "Turns you into a one man army.",
     "tooltip.potionrelicsmod.dolphinsgracerelic": "You are accompanied by the soul of a dolphin condensed into gold.",
+    "tooltip.potionrelicsmod.invisibilityrelic": "Every cell in your body gains the iridophores of a chameleon.",
 
     "creativetab.potionrelicstab": "Potion Relics"
 }
