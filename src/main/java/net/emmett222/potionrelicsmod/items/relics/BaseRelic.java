@@ -2,10 +2,7 @@ package net.emmett222.potionrelicsmod.items.relics;
 
 import java.util.List;
 
-import org.antlr.v4.Tool;
-
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.effect.MobEffect;
