@@ -23,7 +23,7 @@ public class DolphinsGraceRelic extends BaseRelic{
      * @param pProperties The pProperties to be used.
      */
     public DolphinsGraceRelic(Properties pProperties) {
-        super(pProperties, MobEffects.DOLPHINS_GRACE, "tooltip.potionrelicsmod.dolphinsgracerelic", 0);
+        super(pProperties, MobEffects.DOLPHINS_GRACE, "tooltip.potionrelicsmod.dolphinsgracerelic", 0, false);
     }
 
     @Override

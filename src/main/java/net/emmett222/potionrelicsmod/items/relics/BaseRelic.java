@@ -26,6 +26,7 @@ public abstract class BaseRelic extends Item {
     MobEffect effect;
     String tooltip;
     int amplifier;
+    boolean canUprade;
 
     /**
      * Explicit constructor.
@@ -34,8 +35,9 @@ public abstract class BaseRelic extends Item {
      * @param effect The effect to be given.
      * @param tooltip The item tooltip to be used.
      * @param amplifier The level of effect to be used. Effects are 1 less than what they should be.
+     * @param canUprade True if the effect can have extra effect in the offhand, false otherwise.
      */
-    public BaseRelic(Properties pProperties, MobEffect effect, String tooltip, int amplifier) {
+    public BaseRelic(Properties pProperties, MobEffect effect, String tooltip, int amplifier, boolean canUprade) {
         super(pProperties);
         this.effect = effect;
         this.tooltip = tooltip;
@@ -54,14 +56,22 @@ public abstract class BaseRelic extends Item {
      */
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
+        System.out.println("Item in slot: " + pSlotId + " | Expected Amp: " + (pSlotId == 40 ? amplifier + 1 : amplifier));
         // If the entity is not a player, do nothing to it.
         if (pEntity.getType() != EntityType.PLAYER) {
             return;
         }
 
         if (pEntity instanceof LivingEntity living) {
-            MobEffectInstance MEI = new MobEffectInstance(effect, 300, amplifier, true, false);
-            living.addEffect(MEI);
+            if ((pStack == living.getOffhandItem()) && (canUprade)) {
+                // If in offhand, give an extra 1 to the amplifier.
+                MobEffectInstance MEI = new MobEffectInstance(effect, 20, amplifier + 1, true, false);
+                living.addEffect(MEI);
+            } else {
+                // Any other slot, just do amplifier.
+                MobEffectInstance MEI = new MobEffectInstance(effect, 20, amplifier, true, false);
+                living.addEffect(MEI);
+            }
         }
     }
 
