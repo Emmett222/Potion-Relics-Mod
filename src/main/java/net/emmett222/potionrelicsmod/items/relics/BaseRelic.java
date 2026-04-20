@@ -39,11 +39,12 @@ public abstract class BaseRelic extends Item {
      * @param canUprade True if the effect can have extra effect in the offhand, false otherwise.
      * @param showSwirls True if the relic shows effect swirls, false otherwise.
      */
-    public BaseRelic(Properties pProperties, MobEffect effect, String tooltip, int amplifier, boolean canUprade, boolean showSwirls) {
+    public BaseRelic(Properties pProperties, MobEffect effect, String tooltip, int amplifier, boolean canUpgrade, boolean showSwirls) {
         super(pProperties);
         this.effect = effect;
         this.tooltip = tooltip;
         this.amplifier = amplifier;
+        this.canUpgrade = canUpgrade;
         this.showSwirls = showSwirls;
     }
 
