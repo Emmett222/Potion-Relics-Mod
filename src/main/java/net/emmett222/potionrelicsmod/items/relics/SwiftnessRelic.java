@@ -17,6 +17,6 @@ public class SwiftnessRelic extends BaseRelic{
      * @param pProperties The pProperties to be used.
      */
     public SwiftnessRelic(Properties pProperties) {
-        super(pProperties, MobEffects.MOVEMENT_SPEED, "tooltip.potionrelicsmod.swiftnessrelic", 1, true, false);
+        super(pProperties, MobEffects.MOVEMENT_SPEED, 70, "tooltip.potionrelicsmod.swiftnessrelic", 1, true, false);
     }
 }

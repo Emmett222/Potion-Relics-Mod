@@ -17,6 +17,6 @@ public class ResistanceRelic extends BaseRelic{
      * @param pProperties The pProperties to be used.
      */
     public ResistanceRelic(Properties pProperties) {
-        super(pProperties, MobEffects.DAMAGE_RESISTANCE, "tooltip.potionrelicsmod.resistancerelic", 0, true, false);
+        super(pProperties, MobEffects.DAMAGE_RESISTANCE, 50, "tooltip.potionrelicsmod.resistancerelic", 0, true, false);
     }
 }

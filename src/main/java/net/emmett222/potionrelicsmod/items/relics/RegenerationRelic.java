@@ -17,7 +17,7 @@ public class RegenerationRelic extends BaseRelic{
      * @param pProperties The pProperties to be used.
      */
     public RegenerationRelic(Properties pProperties) {
-        super(pProperties, MobEffects.REGENERATION, "tooltip.potionrelicsmod.regenerationrelic", 1, true, false);
+        super(pProperties, MobEffects.REGENERATION, 70, "tooltip.potionrelicsmod.regenerationrelic", 1, true, false);
     }
 }
 

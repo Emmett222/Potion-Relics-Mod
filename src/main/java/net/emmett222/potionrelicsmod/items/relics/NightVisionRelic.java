@@ -17,6 +17,6 @@ public class NightVisionRelic extends BaseRelic{
      * @param pProperties The pProperties to be used.
      */
     public NightVisionRelic(Properties pProperties) {
-        super(pProperties, MobEffects.NIGHT_VISION, "tooltip.potionrelicsmod.nightvisionrelic", 0, false, false);
+        super(pProperties, MobEffects.NIGHT_VISION, 280, "tooltip.potionrelicsmod.nightvisionrelic", 0, false, false);
     }    
 }

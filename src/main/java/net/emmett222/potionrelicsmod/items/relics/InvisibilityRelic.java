@@ -17,6 +17,6 @@ public class InvisibilityRelic extends BaseRelic{
      * @param pProperties The pProperties to be used.
      */
     public InvisibilityRelic(Properties pProperties) {
-        super(pProperties, MobEffects.INVISIBILITY, "tooltip.potionrelicsmod.invisibilityrelic", 0, false, true);
+        super(pProperties, MobEffects.INVISIBILITY, 280, "tooltip.potionrelicsmod.invisibilityrelic", 0, false, true);
     }
 }

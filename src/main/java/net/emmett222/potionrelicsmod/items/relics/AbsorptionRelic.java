@@ -22,7 +22,7 @@ public class AbsorptionRelic extends BaseRelic{
      * @param pProperties The pProperties to be used.
      */
     public AbsorptionRelic(Properties pProperties) {
-        super(pProperties, MobEffects.ABSORPTION, "tooltip.potionrelicsmod.absorptionrelic", 3, false, false);
+        super(pProperties, MobEffects.ABSORPTION, 0, "tooltip.potionrelicsmod.absorptionrelic", 0, false, false);
     }
 
     /**
