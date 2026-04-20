@@ -30,6 +30,9 @@ public class ModItems {
     public static final RegistryObject<Item> REGENERATIONRELIC = ITEMS.register("regenerationrelic", 
         () -> new RegenerationRelic(new Item.Properties()));
 
+    public static final RegistryObject<Item> TABICON = ITEMS.register("tabicon", 
+        () -> new Item(new Item.Properties().stacksTo(1)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

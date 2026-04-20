@@ -14,7 +14,7 @@ public class ModCreativeModeTabs {
         DeferredRegister.create(Registries.CREATIVE_MODE_TAB, PotionRelicsMod.MOD_ID);
 
     public static final RegistryObject<CreativeModeTab> POTION_RELICS_TAB = CREATIVE_MODE_TABS.register("potion_relics_tab",
-        () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.NIGHTVISIONRELIC.get()))
+        () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.TABICON.get()))
         .title(Component.translatable("creativetab.potionrelicstab"))
         .displayItems((pParameters, pOutput) -> {
             pOutput.accept(ModItems.NIGHTVISIONRELIC.get());
