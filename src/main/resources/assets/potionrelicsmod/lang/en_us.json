@@ -1,5 +1,9 @@
 {
     "item.potionrelicsmod.nightvisionrelic": "Relic of Night Vision",
+    "item.potionrelicsmod.strengthrelic": "Relic of Strength",
+
+    "tooltip.potionrelicsmod.nightvisionrelic": "Grants sight even in the darkest of nights.",
+    "tooltip.potionrelicsmod.strengthrelic": "Grants sight even in the darkest of nights.",
 
     "creativetab.potionrelics_tab": "Potion Relics"
 }
