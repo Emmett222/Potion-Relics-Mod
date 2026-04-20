@@ -1,12 +1,6 @@
 package net.emmett222.potionrelicsmod.items.relics;
 
-import java.util.List;
-
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
 
 /**
  * Dolphin's Grace Relic. Gives the player constant Dolphin's Grace if in the inventory.

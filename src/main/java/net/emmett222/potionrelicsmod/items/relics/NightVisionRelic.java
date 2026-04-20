@@ -1,12 +1,6 @@
 package net.emmett222.potionrelicsmod.items.relics;
 
-import java.util.List;
-
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
 
 /**
  * Night Vision Relic. Gives the player constant night vision if in the inventory.
