@@ -5,6 +5,7 @@
     "item.potionrelicsmod.invisibilityrelic": "Relic of Invisibility",
     "item.potionrelicsmod.absorptionrelic": "Relic of Absorption",
     "item.potionrelicsmod.regenerationrelic": "Relic of Regeneration",
+    "item.potionrelicsmod.resistancerelic": "Relic of Resistance",
 
     "tooltip.potionrelicsmod.nightvisionrelic": "Grants sight even in the darkest of nights.",
     "tooltip.potionrelicsmod.strengthrelic": "Turns you into a one man army.",
@@ -12,6 +13,7 @@
     "tooltip.potionrelicsmod.invisibilityrelic": "Every cell in your body gains the iridophores of a chameleon.",
     "tooltip.potionrelicsmod.absorptionrelic": "Electrifies your heart to beat twice as fast.",
     "tooltip.potionrelicsmod.regenerationrelic": "Your wounds heal faster than you can feel their pain.",
+    "tooltip.potionrelicsmod.resistancerelic": "Skin is now your armor.",
 
     "creativetab.potionrelicstab": "Potion Relics"
 }

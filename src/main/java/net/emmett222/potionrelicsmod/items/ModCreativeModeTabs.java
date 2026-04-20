@@ -23,6 +23,7 @@ public class ModCreativeModeTabs {
             pOutput.accept(ModItems.INVISIBILITYRELIC.get());
             pOutput.accept(ModItems.ABSORPTIONRELIC.get());
             pOutput.accept(ModItems.REGENERATIONRELIC.get());
+            pOutput.accept(ModItems.RESISTANCERELIC.get());
         })
         .build()
     );
