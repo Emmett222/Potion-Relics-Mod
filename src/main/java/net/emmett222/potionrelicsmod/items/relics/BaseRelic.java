@@ -74,6 +74,11 @@ public abstract class BaseRelic extends Item {
     }
 
     @Override
+    public boolean isFoil(ItemStack pStack) {
+        return true;
+    }
+
+    @Override
     public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents,
             TooltipFlag pIsAdvanced) {
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
