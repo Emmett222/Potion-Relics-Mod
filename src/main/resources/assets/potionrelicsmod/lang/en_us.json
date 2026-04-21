@@ -9,6 +9,7 @@
     "item.potionrelicsmod.swiftnessrelic": "Relic of Swiftness",
     "item.potionrelicsmod.hasterelic": "Relic of Haste",
     "item.potionrelicsmod.fireresistancerelic": "Relic of Fire Resistance",
+    "item.potionrelicsmod.saturationrelic": "Relic of Saturation",
 
     "tooltip.potionrelicsmod.nightvisionrelic": "Grants sight even in the darkest of nights.",
     "tooltip.potionrelicsmod.strengthrelic": "Turns you into a one man army.",
@@ -20,6 +21,7 @@
     "tooltip.potionrelicsmod.swiftnessrelic": "Muscle fibers contract at incredible speed.",
     "tooltip.potionrelicsmod.hasterelic": "Blocks tremble under your pickaxe's might.",
     "tooltip.potionrelicsmod.fireresistancerelic": "The fire inside you burns brighter then the heat around you.",
+    "tooltip.potionrelicsmod.saturationrelic": "Just looking at the chicken on the plate fills your stomach.",
 
     "creativetab.potionrelicstab": "Potion Relics"
 }

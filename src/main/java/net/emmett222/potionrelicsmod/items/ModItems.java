@@ -41,6 +41,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> FIRERESISTANCERELIC = ITEMS.register("fireresistancerelic", 
         () -> new FireResistanceRelic(new Item.Properties()));
+    
+    public static final RegistryObject<Item> SATURATIONRELIC = ITEMS.register("saturationrelic", 
+        () -> new SaturationRelic(new Item.Properties()));
 
     public static final RegistryObject<Item> TABICON = ITEMS.register("tabicon", 
         () -> new Item(new Item.Properties().stacksTo(1)));
