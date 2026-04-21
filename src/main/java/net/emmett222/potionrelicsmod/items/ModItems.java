@@ -9,44 +9,46 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ModItems {
-    public static final DeferredRegister<Item> ITEMS =
-        DeferredRegister.create(ForgeRegistries.ITEMS, PotionRelicsMod.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS,
+            PotionRelicsMod.MOD_ID);
 
-    public static final RegistryObject<Item> NIGHTVISIONRELIC = ITEMS.register("nightvisionrelic", 
-        () -> new NightVisionRelic(new Item.Properties()));
+    public static final RegistryObject<Item> ABSORPTIONRELIC = ITEMS.register("absorptionrelic",
+            () -> new AbsorptionRelic(new Item.Properties()));
 
-    public static final RegistryObject<Item> STRENGTHRELIC = ITEMS.register("strengthrelic", 
-        () -> new StrengthRelic(new Item.Properties()));
+    public static final RegistryObject<Item> DOLPHINSGRACERELIC = ITEMS.register("dolphinsgracerelic",
+            () -> new DolphinsGraceRelic(new Item.Properties()));
 
-    public static final RegistryObject<Item> DOLPHINSGRACERELIC = ITEMS.register("dolphinsgracerelic", 
-        () -> new DolphinsGraceRelic(new Item.Properties()));
-    
-    public static final RegistryObject<Item> INVISIBILITYRELIC = ITEMS.register("invisibilityrelic", 
-        () -> new InvisibilityRelic(new Item.Properties()));
-    
-    public static final RegistryObject<Item> ABSORPTIONRELIC = ITEMS.register("absorptionrelic", 
-        () -> new AbsorptionRelic(new Item.Properties()));
+    public static final RegistryObject<Item> FIRERESISTANCERELIC = ITEMS.register("fireresistancerelic",
+            () -> new FireResistanceRelic(new Item.Properties()));
 
-    public static final RegistryObject<Item> REGENERATIONRELIC = ITEMS.register("regenerationrelic", 
-        () -> new RegenerationRelic(new Item.Properties()));
+    public static final RegistryObject<Item> HASTERELIC = ITEMS.register("hasterelic",
+            () -> new HasteRelic(new Item.Properties()));
 
-    public static final RegistryObject<Item> RESISTANCERELIC = ITEMS.register("resistancerelic", 
-        () -> new ResistanceRelic(new Item.Properties()));
+    public static final RegistryObject<Item> INVISIBILITYRELIC = ITEMS.register("invisibilityrelic",
+            () -> new InvisibilityRelic(new Item.Properties()));
 
-    public static final RegistryObject<Item> SWIFTNESSRELIC = ITEMS.register("swiftnessrelic", 
-        () -> new SwiftnessRelic(new Item.Properties()));
+    public static final RegistryObject<Item> NIGHTVISIONRELIC = ITEMS.register("nightvisionrelic",
+            () -> new NightVisionRelic(new Item.Properties()));
 
-    public static final RegistryObject<Item> HASTERELIC = ITEMS.register("hasterelic", 
-        () -> new HasteRelic(new Item.Properties()));
+    public static final RegistryObject<Item> REGENERATIONRELIC = ITEMS.register("regenerationrelic",
+            () -> new RegenerationRelic(new Item.Properties()));
 
-    public static final RegistryObject<Item> FIRERESISTANCERELIC = ITEMS.register("fireresistancerelic", 
-        () -> new FireResistanceRelic(new Item.Properties()));
-    
-    public static final RegistryObject<Item> SATURATIONRELIC = ITEMS.register("saturationrelic", 
-        () -> new SaturationRelic(new Item.Properties()));
+    public static final RegistryObject<Item> RESISTANCERELIC = ITEMS.register("resistancerelic",
+            () -> new ResistanceRelic(new Item.Properties()));
 
-    public static final RegistryObject<Item> TABICON = ITEMS.register("tabicon", 
-        () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SATURATIONRELIC = ITEMS.register("saturationrelic",
+            () -> new SaturationRelic(new Item.Properties()));
+
+    public static final RegistryObject<Item> STRENGTHRELIC = ITEMS.register("strengthrelic",
+            () -> new StrengthRelic(new Item.Properties()));
+
+    public static final RegistryObject<Item> SWIFTNESSRELIC = ITEMS.register("swiftnessrelic",
+            () -> new SwiftnessRelic(new Item.Properties()));
+
+            
+
+    public static final RegistryObject<Item> TABICON = ITEMS.register("tabicon",
+            () -> new Item(new Item.Properties().stacksTo(1)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

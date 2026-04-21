@@ -17,17 +17,17 @@ public class ModCreativeModeTabs {
         () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.TABICON.get()))
         .title(Component.translatable("creativetab.potionrelicstab"))
         .displayItems((pParameters, pOutput) -> {
-            pOutput.accept(ModItems.NIGHTVISIONRELIC.get());
-            pOutput.accept(ModItems.STRENGTHRELIC.get());
-            pOutput.accept(ModItems.DOLPHINSGRACERELIC.get());
-            pOutput.accept(ModItems.INVISIBILITYRELIC.get());
             pOutput.accept(ModItems.ABSORPTIONRELIC.get());
+            pOutput.accept(ModItems.DOLPHINSGRACERELIC.get());
+            pOutput.accept(ModItems.FIRERESISTANCERELIC.get());
+            pOutput.accept(ModItems.HASTERELIC.get());
+            pOutput.accept(ModItems.INVISIBILITYRELIC.get());
+            pOutput.accept(ModItems.NIGHTVISIONRELIC.get());
             pOutput.accept(ModItems.REGENERATIONRELIC.get());
             pOutput.accept(ModItems.RESISTANCERELIC.get());
-            pOutput.accept(ModItems.SWIFTNESSRELIC.get());
-            pOutput.accept(ModItems.HASTERELIC.get());
-            pOutput.accept(ModItems.FIRERESISTANCERELIC.get());
             pOutput.accept(ModItems.SATURATIONRELIC.get());
+            pOutput.accept(ModItems.STRENGTHRELIC.get());
+            pOutput.accept(ModItems.SWIFTNESSRELIC.get());
         })
         .build()
     );
