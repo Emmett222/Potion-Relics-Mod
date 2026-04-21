@@ -8,6 +8,7 @@
     "item.potionrelicsmod.resistancerelic": "Relic of Resistance",
     "item.potionrelicsmod.swiftnessrelic": "Relic of Swiftness",
     "item.potionrelicsmod.hasterelic": "Relic of Haste",
+    "item.potionrelicsmod.fireresistancerelic": "Relic of Fire Resistance",
 
     "tooltip.potionrelicsmod.nightvisionrelic": "Grants sight even in the darkest of nights.",
     "tooltip.potionrelicsmod.strengthrelic": "Turns you into a one man army.",
@@ -18,6 +19,7 @@
     "tooltip.potionrelicsmod.resistancerelic": "Skin is now your armor.",
     "tooltip.potionrelicsmod.swiftnessrelic": "Muscle fibers contract at incredible speed.",
     "tooltip.potionrelicsmod.hasterelic": "Blocks tremble under your pickaxe's might.",
+    "tooltip.potionrelicsmod.fireresistancerelic": "The fire inside you burns brighter then the heat around you.",
 
     "creativetab.potionrelicstab": "Potion Relics"
 }
