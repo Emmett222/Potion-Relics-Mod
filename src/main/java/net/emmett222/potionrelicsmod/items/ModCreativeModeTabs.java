@@ -28,6 +28,7 @@ public class ModCreativeModeTabs {
             pOutput.accept(ModItems.REGENERATIONRELIC.get());
             pOutput.accept(ModItems.RESISTANCERELIC.get());
             pOutput.accept(ModItems.SATURATIONRELIC.get());
+            pOutput.accept(ModItems.SLOWFALLINGRELIC.get());
             pOutput.accept(ModItems.STRENGTHRELIC.get());
             pOutput.accept(ModItems.SWIFTNESSRELIC.get());
             pOutput.accept(ModItems.WATERBREATHINGRELIC.get());

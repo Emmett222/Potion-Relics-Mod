@@ -67,6 +67,11 @@ public class ModConfigs {
         public static final ForgeConfigSpec.ConfigValue<Boolean> SATURATION_UPGRADE;
         public static final ForgeConfigSpec.ConfigValue<Boolean> SATURATION_PARTICLES;
 
+        // Slow Falling
+        public static final ForgeConfigSpec.ConfigValue<Integer> SLOW_FALLING_LEVEL;
+        public static final ForgeConfigSpec.ConfigValue<Boolean> SLOW_FALLING_UPGRADE;
+        public static final ForgeConfigSpec.ConfigValue<Boolean> SLOW_FALLING_PARTICLES;
+
         // Strength
         public static final ForgeConfigSpec.ConfigValue<Integer> STRENGTH_LEVEL;
         public static final ForgeConfigSpec.ConfigValue<Boolean> STRENGTH_UPGRADE;
@@ -88,19 +93,19 @@ public class ModConfigs {
 
         public static int absorptionCooldown, dolphinsGraceLevel, fireResistanceLevel, hasteLevel,
                         heroOfTheVillageLevel, invisibilityLevel, jumpBoostLevel,
-                        nightVisionLevel, regenerationLevel, resistanceLevel, saturationLevel, strengthLevel,
+                        nightVisionLevel, regenerationLevel, resistanceLevel, saturationLevel, slowFallingLevel, strengthLevel,
                         swiftnessLevel, waterBreathingLevel;
 
         public static boolean absorptionUpgrade, dolphinsGraceUpgrade, fireResistanceUpgrade, hasteUpgrade,
                         heroOfTheVillageUpgrade,
                         invisibilityUpgrade, jumpBoostUpgrade, nightVisionUpgrade, regenerationUpgrade, resistanceUpgrade,
-                        saturationUpgrade,
+                        saturationUpgrade, slowFallingUpgrade,
                         strengthUpgrade, swiftnessUpgrade, waterBreathingUpgrade;
 
         public static boolean absorptionParticles, dolphinsGraceParticles, fireResistanceParticles, hasteParticles,
                         heroOfTheVillageParticles,
                         invisibilityParticles, jumpBoostParticles, nightVisionParticles, regenerationParticles, resistanceParticles,
-                        saturationParticles, strengthParticles, swiftnessParticles, waterBreathingParticles;
+                        saturationParticles, slowFallingParticles, strengthParticles, swiftnessParticles, waterBreathingParticles;
 
         // Strings
         private static final String levelExplanation = " (0 = Level I, 1 = Level II, 2 = Level III, etc.)";
@@ -205,6 +210,14 @@ public class ModConfigs {
                 SATURATION_PARTICLES = BUILDER.comment("Show potion swirls?").define("saturationParticles", false);
                 BUILDER.pop();
 
+                // --- SLOW FALLING ---
+                BUILDER.push("Slow Falling Relic");
+                SLOW_FALLING_LEVEL = BUILDER.comment("Amplifier level for Slow Falling" + levelExplanation)
+                                .defineInRange("slowFallingLevel", 0, 0, 254);
+                SLOW_FALLING_UPGRADE = BUILDER.comment("Can upgrade in offhand").define("slowFallingUpgrade", true);
+                SLOW_FALLING_PARTICLES = BUILDER.comment("Show potion swirls?").define("slowFallingParticles", false);
+                BUILDER.pop();
+
                 // --- STRENGTH ---
                 BUILDER.push("Strength Relic");
                 STRENGTH_LEVEL = BUILDER.comment("Amplifier level for Strength" + levelExplanation)
@@ -294,6 +307,11 @@ public class ModConfigs {
                 saturationLevel = Math.max(0, SATURATION_LEVEL.get());
                 saturationUpgrade = SATURATION_UPGRADE.get();
                 saturationParticles = SATURATION_PARTICLES.get();
+
+                // Slow Falling
+                slowFallingLevel = Math.max(0, SLOW_FALLING_LEVEL.get());
+                slowFallingUpgrade = SLOW_FALLING_UPGRADE.get();
+                slowFallingParticles = SLOW_FALLING_PARTICLES.get();
 
                 // Strength
                 strengthLevel = Math.max(0, STRENGTH_LEVEL.get());

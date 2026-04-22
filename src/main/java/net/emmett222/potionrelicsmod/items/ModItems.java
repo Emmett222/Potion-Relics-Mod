@@ -45,6 +45,9 @@ public class ModItems {
     public static final RegistryObject<Item> SATURATIONRELIC = ITEMS.register("saturationrelic",
             () -> new SaturationRelic(new Item.Properties()));
 
+    public static final RegistryObject<Item> SLOWFALLINGRELIC = ITEMS.register("slowfallingrelic",
+            () -> new SlowFallingRelic(new Item.Properties()));
+
     public static final RegistryObject<Item> STRENGTHRELIC = ITEMS.register("strengthrelic",
             () -> new StrengthRelic(new Item.Properties()));
 
