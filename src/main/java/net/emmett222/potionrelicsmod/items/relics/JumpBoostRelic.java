@@ -20,7 +20,7 @@ public class JumpBoostRelic extends BaseRelic {
     public JumpBoostRelic(Properties pProperties) {
         super(pProperties,
                 MobEffects.JUMP,
-                70,
+                40,
                 "tooltip.potionrelicsmod.jumpboostrelic");
     }
 

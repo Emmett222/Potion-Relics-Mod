@@ -20,7 +20,7 @@ public class SwiftnessRelic extends BaseRelic {
     public SwiftnessRelic(Properties pProperties) {
         super(pProperties,
                 MobEffects.MOVEMENT_SPEED,
-                70,
+                40,
                 "tooltip.potionrelicsmod.swiftnessrelic");
     }
 

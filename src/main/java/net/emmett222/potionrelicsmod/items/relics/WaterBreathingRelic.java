@@ -21,7 +21,7 @@ public class WaterBreathingRelic extends BaseRelic {
     public WaterBreathingRelic(Properties pProperties) {
         super(pProperties,
                 MobEffects.WATER_BREATHING,
-                70,
+                40,
                 "tooltip.potionrelicsmod.waterbreathingrelic");
     }
 

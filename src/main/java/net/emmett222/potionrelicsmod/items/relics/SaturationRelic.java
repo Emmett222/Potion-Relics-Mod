@@ -20,7 +20,7 @@ public class SaturationRelic extends BaseRelic {
     public SaturationRelic(Properties pProperties) {
         super(pProperties,
                 MobEffects.SATURATION,
-                70,
+                40,
                 "tooltip.potionrelicsmod.saturationrelic");
     }
 

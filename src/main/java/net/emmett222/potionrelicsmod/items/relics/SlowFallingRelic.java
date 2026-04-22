@@ -19,7 +19,7 @@ public class SlowFallingRelic extends BaseRelic {
     public SlowFallingRelic(Properties pProperties) {
         super(pProperties,
                 MobEffects.SLOW_FALLING,
-                70,
+                40,
                 "tooltip.potionrelicsmod.slowfallingrelic");
     }
 

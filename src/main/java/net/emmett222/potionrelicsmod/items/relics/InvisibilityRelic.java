@@ -22,8 +22,7 @@ import net.minecraft.world.level.Level;
  * @version 4-21-2026
  */
 public class InvisibilityRelic extends BaseRelic {
-    private static final int MAIN_HAND_DURATION = 20;
-    private static final int REFRESH_THRESHOLD = 10;
+    private static final int MAIN_HAND_DURATION = 40;
 
     /**
      * Explicit constructor.
@@ -77,7 +76,9 @@ public class InvisibilityRelic extends BaseRelic {
             }
 
             MobEffectInstance currentEffect = living.getEffect(MobEffects.INVISIBILITY);
-            if (currentEffect != null && currentEffect.getDuration() > REFRESH_THRESHOLD && !currentEffect.isVisible()) {
+            if (currentEffect != null
+                    && currentEffect.getDuration() > getRefreshThresholdTicks()
+                    && !currentEffect.isVisible()) {
                 return;
             }
 

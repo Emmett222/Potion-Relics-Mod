@@ -37,8 +37,7 @@ public abstract class BaseRelic extends Item {
      * 
      * @param pProperties The pProperties to be used.
      * @param effect      The effect to be given.
-     * @param duration    the duration of the effect. Some effects work incorrectly
-     *                    with shorter durations. Must be higher than 70 to work.
+     * @param duration    The duration of the managed effect window in ticks.
      * @param tooltip     The item tooltip to be used.
      */
     public BaseRelic(Properties pProperties, MobEffect effect, int duration, String tooltip) {
@@ -132,6 +131,15 @@ public abstract class BaseRelic extends Item {
     }
 
     /**
+     * Returns how low the active effect can get before the relic refreshes it.
+     * 
+     * @return The refresh threshold in ticks.
+     */
+    protected int getRefreshThresholdTicks() {
+        return Math.max(10, duration / 2);
+    }
+
+    /**
      * Called each tick as long as the relic is in the inventory.
      * Gives the effect, if the item holder is a player of course.
      * 
@@ -145,32 +153,26 @@ public abstract class BaseRelic extends Item {
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         // If the entity is not a player, do nothing to it.
-        if (!isEnabled(pStack) || pEntity.getType() != EntityType.PLAYER) {
+        if (pLevel.isClientSide || !isEnabled(pStack) || pEntity.getType() != EntityType.PLAYER) {
             return;
         }
 
         if (pEntity instanceof LivingEntity living) {
-            if ((pStack == living.getOffhandItem()) && (getConfigCanUpgrade())) {
-                // If in offhand, give an extra 1 to the amplifier.
-                if (living.getEffect(effect) != null) {
-                    if (living.getEffect(effect).getDuration() > duration - 60)
-                        return; // If player already has the effect.
-                }
-
-                MobEffectInstance MEI = new MobEffectInstance(effect, duration, getConfigAmplifier() + 1,
-                        !getConfigShowParticles(), getConfigShowParticles());
-                living.addEffect(MEI);
-            } else {
-                // Any other slot, just do amplifier.
-                if (living.getEffect(effect) != null) {
-                    if (living.getEffect(effect).getDuration() > duration - 60)
-                        return; // If player already has the effect.
-                }
-
-                MobEffectInstance MEI = new MobEffectInstance(effect, duration, getConfigAmplifier(),
-                        !getConfigShowParticles(), getConfigShowParticles());
-                living.addEffect(MEI);
+            int amplifier = getConfigAmplifier();
+            if ((pStack == living.getOffhandItem()) && getConfigCanUpgrade()) {
+                amplifier++;
             }
+
+            MobEffectInstance currentEffect = living.getEffect(effect);
+            if (currentEffect != null
+                    && currentEffect.getAmplifier() >= amplifier
+                    && currentEffect.getDuration() > getRefreshThresholdTicks()) {
+                return;
+            }
+
+            MobEffectInstance MEI = new MobEffectInstance(effect, duration, amplifier,
+                    !getConfigShowParticles(), getConfigShowParticles());
+            living.addEffect(MEI);
         }
     }
 
