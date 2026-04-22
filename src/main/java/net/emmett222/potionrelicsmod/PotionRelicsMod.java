@@ -2,6 +2,7 @@ package net.emmett222.potionrelicsmod;
 
 import com.mojang.logging.LogUtils;
 
+import net.emmett222.potionrelicsmod.configs.ModConfigs;
 import net.emmett222.potionrelicsmod.items.ModCreativeModeTabs;
 import net.emmett222.potionrelicsmod.items.ModItems;
 import net.minecraftforge.api.distmarker.Dist;
@@ -10,7 +11,9 @@ import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -24,6 +27,9 @@ public class PotionRelicsMod {
 
     public PotionRelicsMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        // Config
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModConfigs.SPEC);
         
         ModCreativeModeTabs.register(modEventBus);
 

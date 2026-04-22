@@ -1,12 +1,14 @@
 package net.emmett222.potionrelicsmod.events;
 
 import net.emmett222.potionrelicsmod.PotionRelicsMod;
+import net.emmett222.potionrelicsmod.configs.ModConfigs;
 import net.emmett222.potionrelicsmod.items.relics.AbsorptionRelic;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.config.ModConfigEvent;
 
 /**
  * Events of Potion Relics Mod. Handles all events.
@@ -50,5 +52,14 @@ public class ModEvents {
                 }
             }
         }
+    }
+
+    /**
+     * On load, put all the config variables into cached fields.
+     * @param event The event. When the config is loaded it is called.
+     */
+    @SubscribeEvent
+    public static void onConfigLoading(ModConfigEvent.Loading event) {
+        ModConfigs.cacheConfigs();
     }
 }
