@@ -23,8 +23,8 @@
     "tooltip.potionrelicsmod.strengthrelic": "Turns you into a one man army.",
     "tooltip.potionrelicsmod.swiftnessrelic": "Muscle fibers contract at incredible speed.",
 
-    "tooltip.potionrelicsmod.inventory": "Anywhere in inventory: %s %s",
-    "tooltip.potionrelicsmod.off_hand": "In offhand: %s %s",
+    "tooltip.potionrelicsmod.inventory": "When in inventory:",
+    "tooltip.potionrelicsmod.off_hand": "When in offhand:",
     "tooltip.potionrelicsmod.inventory_Absorption": "Anywhere in inventory: +%s health",
 
     "creativetab.potionrelicstab": "Potion Relics"
