@@ -4,7 +4,7 @@ import net.emmett222.potionrelicsmod.configs.ModConfigs;
 import net.minecraft.world.effect.MobEffects;
 
 /**
- * Hero Of The Village Relic. Gives the player constant Dolphin's Grace if in the
+ * Hero Of The Village Relic. Gives the player constant Hero Of The Village if in the
  * inventory.
  * 
  * @author Emmett Grebe
@@ -14,7 +14,7 @@ public class HeroOfTheVillageRelic extends BaseRelic {
 
     /**
      * Explicit constructor.
-     * Sets the effect to Dolphin's Grace 1 and does not allow offhand upgrading.
+     * Sets the effect to Hero Of The Village 1 and allows offhand upgrading.
      * 
      * @param pProperties The pProperties to be used.
      */
@@ -26,9 +26,9 @@ public class HeroOfTheVillageRelic extends BaseRelic {
     }
 
     /**
-     * Returns the Dolphin's Grace level from the configs.
+     * Returns the Hero Of The Village level from the configs.
      * 
-     * @return The Dolphin's Grace level denoted in config.
+     * @return The Hero Of The Village level denoted in config.
      */
     @Override
     protected int getConfigAmplifier() {
@@ -36,7 +36,7 @@ public class HeroOfTheVillageRelic extends BaseRelic {
     }
 
     /**
-     * Returns if the Dolphin's Grace Relic can upgrade in offhand from the configs.
+     * Returns if the Hero Of The Village Relic can upgrade in offhand from the configs.
      * 
      * @return True if it can upgrade, false otherwise.
      */
@@ -46,7 +46,7 @@ public class HeroOfTheVillageRelic extends BaseRelic {
     }
 
     /**
-     * Returns if the Dolphin's Grace Relic shows particles around the player.
+     * Returns if the Hero Of The Village Relic shows particles around the player.
      * 
      * @return True if it shows particles, false otherwise.
      */
