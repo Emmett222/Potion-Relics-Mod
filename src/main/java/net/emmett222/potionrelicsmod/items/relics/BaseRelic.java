@@ -147,7 +147,8 @@ public abstract class BaseRelic extends Item {
                 .withStyle(ChatFormatting.ITALIC);
         Component inventoryComp = Component.translatable("tooltip.potionrelicsmod.inventory")
                 .withStyle(ChatFormatting.GRAY);
-        Component effectInvComp = Component.translatable(effect.getDisplayName().getString() + " " + (getConfigAmplifier() + 1))
+        Component effectInvComp = Component
+                .translatable(effect.getDisplayName().getString() + " " + (getConfigAmplifier() + 1))
                 .withStyle(ChatFormatting.DARK_GREEN);
 
         pTooltipComponents.add(desComp);
@@ -157,9 +158,10 @@ public abstract class BaseRelic extends Item {
 
         if (getConfigCanUpgrade()) {
             Component offHandComp = Component.translatable("tooltip.potionrelicsmod.off_hand")
-                .withStyle(ChatFormatting.GRAY);
-            Component effectOffHandComp = Component.translatable(effect.getDisplayName().getString() + " " + (getConfigAmplifier() + 2))
-                .withStyle(ChatFormatting.DARK_GREEN);
+                    .withStyle(ChatFormatting.GRAY);
+            Component effectOffHandComp = Component
+                    .translatable(effect.getDisplayName().getString() + " " + (getConfigAmplifier() + 2))
+                    .withStyle(ChatFormatting.DARK_GREEN);
             pTooltipComponents.add(offHandComp);
             pTooltipComponents.add(effectOffHandComp);
         }
