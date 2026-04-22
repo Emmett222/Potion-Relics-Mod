@@ -21,6 +21,7 @@ public class ModCreativeModeTabs {
             pOutput.accept(ModItems.DOLPHINSGRACERELIC.get());
             pOutput.accept(ModItems.FIRERESISTANCERELIC.get());
             pOutput.accept(ModItems.HASTERELIC.get());
+            pOutput.accept(ModItems.HEROOFTHEVILLAGERELIC.get());
             pOutput.accept(ModItems.INVISIBILITYRELIC.get());
             pOutput.accept(ModItems.NIGHTVISIONRELIC.get());
             pOutput.accept(ModItems.REGENERATIONRELIC.get());

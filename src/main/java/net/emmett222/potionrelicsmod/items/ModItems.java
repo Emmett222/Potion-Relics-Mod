@@ -24,6 +24,9 @@ public class ModItems {
     public static final RegistryObject<Item> HASTERELIC = ITEMS.register("hasterelic",
             () -> new HasteRelic(new Item.Properties()));
 
+    public static final RegistryObject<Item> HEROOFTHEVILLAGERELIC = ITEMS.register("heroofthevillagerelic",
+            () -> new HeroOfTheVillageRelic(new Item.Properties()));
+
     public static final RegistryObject<Item> INVISIBILITYRELIC = ITEMS.register("invisibilityrelic",
             () -> new InvisibilityRelic(new Item.Properties()));
 
