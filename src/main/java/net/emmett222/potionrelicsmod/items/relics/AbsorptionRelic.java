@@ -1,23 +1,18 @@
 package net.emmett222.potionrelicsmod.items.relics;
 
-import java.util.List;
-
 import net.emmett222.potionrelicsmod.configs.ModConfigs;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
 /**
  * Absorption Relic. Gives the player constant Absorption if in the inventory.
  * 
  * @author Emmett Grebe
- * @version 4-20-2026
+ * @version 4-21-2026
  */
 public class AbsorptionRelic extends BaseRelic {
 
@@ -59,7 +54,8 @@ public class AbsorptionRelic extends BaseRelic {
     }
 
     /**
-     * Returns Absorption level based off of hearts. Calculated by absorptionAmount divided by 4.
+     * Returns Absorption level based off of hearts. Calculated by absorptionAmount
+     * divided by 4.
      * 
      * @return Returns Absorption level based off of hearts.
      */

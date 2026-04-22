@@ -1,20 +1,18 @@
 package net.emmett222.potionrelicsmod.events;
 
 import net.emmett222.potionrelicsmod.PotionRelicsMod;
-import net.emmett222.potionrelicsmod.configs.ModConfigs;
 import net.emmett222.potionrelicsmod.items.relics.AbsorptionRelic;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
 
 /**
  * Events of Potion Relics Mod. Handles all events.
  * 
  * @author Emmett Grebe
- * @version 4-20-2026
+ * @version 4-21-2026
  */
 @Mod.EventBusSubscriber(modid = PotionRelicsMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ModEvents {

@@ -19,7 +19,7 @@ import net.minecraft.world.level.Level;
  * Base relic class for the relics to extend.
  * 
  * @author Emmett Grebe
- * @version 4-19-2026
+ * @version 4-21-2026
  */
 public abstract class BaseRelic extends Item {
 
