@@ -155,7 +155,7 @@ public class ModConfigs {
                 // --- HERO OF THE VILLAGE ---
                 BUILDER.push("Hero Of The Village Relic");
                 HERO_OF_THE_VILLAGE_LEVEL = BUILDER.comment("Amplifier level for Hero Of The Village" + levelExplanation)
-                                .defineInRange("heroOfTheVillageLevel", 1, 0, 254);
+                                .defineInRange("heroOfTheVillageLevel", 0, 0, 254);
                 HERO_OF_THE_VILLAGE_UPGRADE = BUILDER.comment("Can upgrade in offhand").define("heroOfTheVillageUpgrade", true);
                 HERO_OF_THE_VILLAGE_PARTICLES = BUILDER.comment("Show potion swirls?").define("heroOfTheVillageParticles", false);
                 BUILDER.pop();
@@ -189,7 +189,7 @@ public class ModConfigs {
                 // --- REGENERATION ---
                 BUILDER.push("Regeneration Relic");
                 REGENERATION_LEVEL = BUILDER.comment("Amplifier level for Regeneration" + levelExplanation)
-                                .defineInRange("regenerationLevel", 0, 0, 254);
+                                .defineInRange("regenerationLevel", 1, 0, 254);
                 REGENERATION_UPGRADE = BUILDER.comment("Can upgrade in offhand").define("regenerationUpgrade", true);
                 REGENERATION_PARTICLES = BUILDER.comment("Show potion swirls?").define("regenerationParticles", false);
                 BUILDER.pop();
@@ -234,7 +234,7 @@ public class ModConfigs {
                 SWIFTNESS_PARTICLES = BUILDER.comment("Show potion swirls?").define("swiftnessParticles", false);
                 BUILDER.pop();
 
-                // --- SWIFTNESS ---
+                // --- WATER BREATHING ---
                 BUILDER.push("Water Breathing Relic");
                 WATER_BREATHING_LEVEL = BUILDER.comment("Amplifier level for Water Breathing" + levelExplanation)
                                 .defineInRange("waterBreathingLevel", 0, 0, 254);
