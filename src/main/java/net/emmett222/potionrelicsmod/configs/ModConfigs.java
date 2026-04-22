@@ -67,20 +67,25 @@ public class ModConfigs {
     public static final ForgeConfigSpec.ConfigValue<Boolean> SWIFTNESS_UPGRADE;
     public static final ForgeConfigSpec.ConfigValue<Boolean> SWIFTNESS_PARTICLES;
 
+    // Water Breathing
+    public static final ForgeConfigSpec.ConfigValue<Integer> WATER_BREATHING_LEVEL;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> WATER_BREATHING_UPGRADE;
+    public static final ForgeConfigSpec.ConfigValue<Boolean> WATER_BREATHING_PARTICLES;
+
     // Cache
     // --- STATIC CACHE ---
     public static float absorptionAmount;
 
     public static int absorptionCooldown, dolphinsGraceLevel, fireResistanceLevel, hasteLevel, invisibilityLevel,
-            nightVisionLevel, regenerationLevel, resistanceLevel, saturationLevel, strengthLevel, swiftnessLevel;
+            nightVisionLevel, regenerationLevel, resistanceLevel, saturationLevel, strengthLevel, swiftnessLevel, waterBreathingLevel;
 
     public static boolean absorptionUpgrade, dolphinsGraceUpgrade, fireResistanceUpgrade, hasteUpgrade,
             invisibilityUpgrade, nightVisionUpgrade, regenerationUpgrade, resistanceUpgrade, saturationUpgrade,
-            strengthUpgrade, swiftnessUpgrade;
+            strengthUpgrade, swiftnessUpgrade, waterBreathingUpgrade;
 
     public static boolean absorptionParticles, dolphinsGraceParticles, fireResistanceParticles, hasteParticles,
             invisibilityParticles, nightVisionParticles, regenerationParticles, resistanceParticles,
-            saturationParticles, strengthParticles, swiftnessParticles;
+            saturationParticles, strengthParticles, swiftnessParticles, waterBreathingParticles;
 
     // Strings
     private static final String levelExplanation = " (0 = Level I, 1 = Level II, 2 = Level III, etc.)";
@@ -180,6 +185,14 @@ public class ModConfigs {
         SWIFTNESS_PARTICLES = BUILDER.comment("Show potion swirls?").define("swiftnessParticles", false);
         BUILDER.pop();
 
+        // --- SWIFTNESS ---
+        BUILDER.push("Water Breathing Relic");
+        WATER_BREATHING_LEVEL = BUILDER.comment("Amplifier level for Water Breathing" + levelExplanation)
+                .defineInRange("waterBreathingLevel", 0, 0, 254);
+        WATER_BREATHING_UPGRADE = BUILDER.comment("Can upgrade in offhand").define("waterBreathingUpgrade", false);
+        WATER_BREATHING_PARTICLES = BUILDER.comment("Show potion swirls?").define("waterBreathingParticles", false);
+        BUILDER.pop();
+
         SPEC = BUILDER.build();
     }
 
@@ -243,5 +256,10 @@ public class ModConfigs {
         swiftnessLevel = Math.max(0, SWIFTNESS_LEVEL.get());
         swiftnessUpgrade = SWIFTNESS_UPGRADE.get();
         swiftnessParticles = SWIFTNESS_PARTICLES.get();
+
+        // Water Breathing
+        waterBreathingLevel = Math.max(0, WATER_BREATHING_LEVEL.get());
+        waterBreathingUpgrade = WATER_BREATHING_UPGRADE.get();
+        waterBreathingParticles = WATER_BREATHING_PARTICLES.get();
     }
 }

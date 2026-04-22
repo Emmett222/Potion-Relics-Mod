@@ -45,6 +45,9 @@ public class ModItems {
     public static final RegistryObject<Item> SWIFTNESSRELIC = ITEMS.register("swiftnessrelic",
             () -> new SwiftnessRelic(new Item.Properties()));
 
+    public static final RegistryObject<Item> WATERBREATHINGRELIC = ITEMS.register("waterbreathingrelic",
+            () -> new WaterBreathingRelic(new Item.Properties()));
+
             
 
     public static final RegistryObject<Item> TABICON = ITEMS.register("tabicon",

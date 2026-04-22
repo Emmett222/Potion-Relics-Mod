@@ -10,6 +10,7 @@
     "item.potionrelicsmod.saturationrelic": "Relic of Saturation",
     "item.potionrelicsmod.strengthrelic": "Relic of Strength",
     "item.potionrelicsmod.swiftnessrelic": "Relic of Swiftness",
+    "item.potionrelicsmod.waterbreathingrelic": "Relic of Water Breathing",
 
     "tooltip.potionrelicsmod.absorptionrelic": "Electrifies your heart to beat twice as fast.",
     "tooltip.potionrelicsmod.dolphinsgracerelic": "You are accompanied by the soul of a dolphin condensed into gold.",
@@ -22,6 +23,7 @@
     "tooltip.potionrelicsmod.saturationrelic": "Just looking at the chicken on the plate fills your stomach.",
     "tooltip.potionrelicsmod.strengthrelic": "Turns you into a one man army.",
     "tooltip.potionrelicsmod.swiftnessrelic": "Muscle fibers contract at incredible speed.",
+    "tooltip.potionrelicsmod.waterbreathingrelic": "You grow unnatural gills capable of breathing freshwater and saltwater.",
 
     "tooltip.potionrelicsmod.inventory": "When in inventory:",
     "tooltip.potionrelicsmod.off_hand": "When in offhand:",
