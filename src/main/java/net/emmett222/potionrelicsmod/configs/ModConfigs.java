@@ -42,6 +42,11 @@ public class ModConfigs {
         public static final ForgeConfigSpec.ConfigValue<Boolean> INVISIBILITY_UPGRADE;
         public static final ForgeConfigSpec.ConfigValue<Boolean> INVISIBILITY_PARTICLES;
 
+        // Invisibility
+        public static final ForgeConfigSpec.ConfigValue<Integer> JUMP_BOOST_LEVEL;
+        public static final ForgeConfigSpec.ConfigValue<Boolean> JUMP_BOOST_UPGRADE;
+        public static final ForgeConfigSpec.ConfigValue<Boolean> JUMP_BOOST_PARTICLES;
+
         // Night Vision
         public static final ForgeConfigSpec.ConfigValue<Integer> NIGHT_VISION_LEVEL;
         public static final ForgeConfigSpec.ConfigValue<Boolean> NIGHT_VISION_UPGRADE;
@@ -82,19 +87,19 @@ public class ModConfigs {
         public static float absorptionAmount;
 
         public static int absorptionCooldown, dolphinsGraceLevel, fireResistanceLevel, hasteLevel,
-                        heroOfTheVillageLevel, invisibilityLevel,
+                        heroOfTheVillageLevel, invisibilityLevel, jumpBoostLevel,
                         nightVisionLevel, regenerationLevel, resistanceLevel, saturationLevel, strengthLevel,
                         swiftnessLevel, waterBreathingLevel;
 
         public static boolean absorptionUpgrade, dolphinsGraceUpgrade, fireResistanceUpgrade, hasteUpgrade,
                         heroOfTheVillageUpgrade,
-                        invisibilityUpgrade, nightVisionUpgrade, regenerationUpgrade, resistanceUpgrade,
+                        invisibilityUpgrade, jumpBoostUpgrade, nightVisionUpgrade, regenerationUpgrade, resistanceUpgrade,
                         saturationUpgrade,
                         strengthUpgrade, swiftnessUpgrade, waterBreathingUpgrade;
 
         public static boolean absorptionParticles, dolphinsGraceParticles, fireResistanceParticles, hasteParticles,
                         heroOfTheVillageParticles,
-                        invisibilityParticles, nightVisionParticles, regenerationParticles, resistanceParticles,
+                        invisibilityParticles, jumpBoostParticles, nightVisionParticles, regenerationParticles, resistanceParticles,
                         saturationParticles, strengthParticles, swiftnessParticles, waterBreathingParticles;
 
         // Strings
@@ -158,6 +163,14 @@ public class ModConfigs {
                 INVISIBILITY_PARTICLES = BUILDER.comment("Invisibility Relic shows particles").define(
                                 "invisibilityParticles",
                                 true);
+                BUILDER.pop();
+
+                // --- JUMP BOOST ---
+                BUILDER.push("Jump Boost Relic");
+                JUMP_BOOST_LEVEL = BUILDER.comment("Amplifier level for Jump Boost" + levelExplanation)
+                                .defineInRange("jumpBoostLevel", 1, 0, 254);
+                JUMP_BOOST_UPGRADE = BUILDER.comment("Can upgrade in offhand").define("jumpBoostUpgrade", true);
+                JUMP_BOOST_PARTICLES = BUILDER.comment("Show potion swirls?").define("jumpBoostParticles", false);
                 BUILDER.pop();
 
                 // --- NIGHT VISION ---
@@ -256,6 +269,11 @@ public class ModConfigs {
                 invisibilityLevel = Math.max(0, INVISIBILITY_LEVEL.get());
                 invisibilityUpgrade = INVISIBILITY_UPGRADE.get();
                 invisibilityParticles = INVISIBILITY_PARTICLES.get();
+
+                // Jump Boost
+                jumpBoostLevel = Math.max(0, JUMP_BOOST_LEVEL.get());
+                jumpBoostUpgrade = JUMP_BOOST_UPGRADE.get();
+                jumpBoostParticles = JUMP_BOOST_PARTICLES.get();
 
                 // Night Vision
                 nightVisionLevel = Math.max(0, NIGHT_VISION_LEVEL.get());

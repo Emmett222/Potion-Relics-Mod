@@ -30,6 +30,9 @@ public class ModItems {
     public static final RegistryObject<Item> INVISIBILITYRELIC = ITEMS.register("invisibilityrelic",
             () -> new InvisibilityRelic(new Item.Properties()));
 
+    public static final RegistryObject<Item> JUMPBOOSTRELIC = ITEMS.register("jumpboostrelic",
+            () -> new JumpBoostRelic(new Item.Properties()));
+
     public static final RegistryObject<Item> NIGHTVISIONRELIC = ITEMS.register("nightvisionrelic",
             () -> new NightVisionRelic(new Item.Properties()));
 
