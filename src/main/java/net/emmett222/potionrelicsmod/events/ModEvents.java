@@ -54,12 +54,5 @@ public class ModEvents {
         }
     }
 
-    /**
-     * On load, put all the config variables into cached fields.
-     * @param event The event. When the config is loaded it is called.
-     */
-    @SubscribeEvent
-    public static void onConfigLoading(ModConfigEvent.Loading event) {
-        ModConfigs.cacheConfigs();
-    }
+    
 }

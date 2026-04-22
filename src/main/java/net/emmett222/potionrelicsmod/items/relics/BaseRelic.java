@@ -145,17 +145,33 @@ public abstract class BaseRelic extends Item {
     /**
      * Sets the tooltip and makes it italic.
      * 
-     * @param pStack The pStack to be used.
-     * @param pLevel the pLevel to be used.
-     * @param pTooltipComponents The pTooltipComponents to be used. Will be updated by this function.
+     * @param pStack             The pStack to be used.
+     * @param pLevel             the pLevel to be used.
+     * @param pTooltipComponents The pTooltipComponents to be used. Will be updated
+     *                           by this function.
      */
     @Override
     public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents,
             TooltipFlag pIsAdvanced) {
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
 
-        Component desComponent = Component.translatable(tooltip)
-            .withStyle(ChatFormatting.ITALIC);
-        pTooltipComponents.add(desComponent);
+        Component desComp = Component.translatable(tooltip)
+                .withStyle(ChatFormatting.ITALIC);
+        Component inventoryComp = Component.translatable("tooltip.potionrelicsmod.inventory",
+                effect.getDisplayName().getString(),
+                (amplifier + 1))
+                .withStyle(ChatFormatting.GRAY);
+
+        pTooltipComponents.add(desComp);
+        pTooltipComponents.add(Component.empty());
+        pTooltipComponents.add(inventoryComp);
+
+        if (canUpgrade) {
+            Component offHandComp = Component.translatable("tooltip.potionrelicsmod.off_hand",
+                effect.getDisplayName().getString(),
+                (amplifier + 2))
+                .withStyle(ChatFormatting.GRAY);
+            pTooltipComponents.add(offHandComp);
+        }
     }
 }

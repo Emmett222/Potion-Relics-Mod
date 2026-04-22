@@ -1,11 +1,16 @@
 package net.emmett222.potionrelicsmod.items.relics;
 
+import java.util.List;
+
 import net.emmett222.potionrelicsmod.configs.ModConfigs;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
 /**
@@ -51,6 +56,31 @@ public class AbsorptionRelic extends BaseRelic {
                 living.getCooldowns().addCooldown(this, ModConfigs.absorptionCooldown);
             }
         }
+    }
+
+    /**
+     * Sets the tooltip and makes it italic.
+     * 
+     * @param pStack             The pStack to be used.
+     * @param pLevel             the pLevel to be used.
+     * @param pTooltipComponents The pTooltipComponents to be used. Will be updated
+     *                           by this function.
+     */
+    @Override
+    public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents,
+            TooltipFlag pIsAdvanced) {
+        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+
+        Component desComp = Component.translatable(tooltip)
+                .withStyle(ChatFormatting.ITALIC);
+        Component inventoryComp = Component.translatable("tooltip.potionrelicsmod.inventory_Absorption",
+                effect.getDisplayName().getString(),
+                ModConfigs.absorptionAmount)
+                .withStyle(ChatFormatting.GRAY);
+
+        pTooltipComponents.add(desComp);
+        pTooltipComponents.add(Component.empty());
+        pTooltipComponents.add(inventoryComp);
     }
 
     /**
