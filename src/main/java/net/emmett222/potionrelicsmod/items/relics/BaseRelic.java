@@ -26,9 +26,6 @@ public abstract class BaseRelic extends Item {
     MobEffect effect;
     int duration;
     String tooltip;
-    int amplifier;
-    boolean canUpgrade;
-    boolean showSwirls;
 
     /**
      * Explicit constructor.
@@ -38,21 +35,12 @@ public abstract class BaseRelic extends Item {
      * @param duration    the duration of the effect. Some effects work incorrectly
      *                    with shorter durations. Must be higher than 70 to work.
      * @param tooltip     The item tooltip to be used.
-     * @param amplifier   The level of effect to be used. Effects are 1 less than
-     *                    what they should be.
-     * @param canUprade   True if the effect can have extra effect in the offhand,
-     *                    false otherwise.
-     * @param showSwirls  True if the relic shows effect swirls, false otherwise.
      */
-    public BaseRelic(Properties pProperties, MobEffect effect, int duration, String tooltip, int amplifier,
-            boolean canUpgrade, boolean showSwirls) {
+    public BaseRelic(Properties pProperties, MobEffect effect, int duration, String tooltip) {
         super(pProperties);
         this.effect = effect;
         this.duration = duration;
         this.tooltip = tooltip;
-        this.amplifier = getConfigAmplifier();
-        this.canUpgrade = getConfigCanUpgrade();
-        this.showSwirls = getConfigShowParticles();
     }
 
     /**
@@ -95,15 +83,15 @@ public abstract class BaseRelic extends Item {
         }
 
         if (pEntity instanceof LivingEntity living) {
-            if ((pStack == living.getOffhandItem()) && (canUpgrade)) {
+            if ((pStack == living.getOffhandItem()) && (getConfigCanUpgrade())) {
                 // If in offhand, give an extra 1 to the amplifier.
                 if (living.getEffect(effect) != null) {
                     if (living.getEffect(effect).getDuration() > duration - 60)
                         return; // If player already has the effect.
                 }
 
-                MobEffectInstance MEI = new MobEffectInstance(effect, duration, amplifier + 1,
-                        !showSwirls, showSwirls);
+                MobEffectInstance MEI = new MobEffectInstance(effect, duration, getConfigAmplifier() + 1,
+                        !getConfigShowParticles(), getConfigShowParticles());
                 living.addEffect(MEI);
             } else {
                 // Any other slot, just do amplifier.
@@ -112,8 +100,8 @@ public abstract class BaseRelic extends Item {
                         return; // If player already has the effect.
                 }
 
-                MobEffectInstance MEI = new MobEffectInstance(effect, duration, amplifier,
-                        !showSwirls, showSwirls);
+                MobEffectInstance MEI = new MobEffectInstance(effect, duration, getConfigAmplifier(),
+                        !getConfigShowParticles(), getConfigShowParticles());
                 living.addEffect(MEI);
             }
         }

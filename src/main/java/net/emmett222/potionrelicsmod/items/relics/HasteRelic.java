@@ -21,10 +21,7 @@ public class HasteRelic extends BaseRelic {
         super(pProperties,
                 MobEffects.DIG_SPEED,
                 70,
-                "tooltip.potionrelicsmod.hasterelic",
-                ModConfigs.hasteLevel,
-                ModConfigs.hasteUpgrade,
-                ModConfigs.hasteParticles);
+                "tooltip.potionrelicsmod.hasterelic");
     }
 
     /**

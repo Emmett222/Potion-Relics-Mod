@@ -21,10 +21,7 @@ public class SwiftnessRelic extends BaseRelic {
         super(pProperties,
                 MobEffects.MOVEMENT_SPEED,
                 70,
-                "tooltip.potionrelicsmod.swiftnessrelic",
-                ModConfigs.swiftnessLevel,
-                ModConfigs.swiftnessUpgrade,
-                ModConfigs.swiftnessParticles);
+                "tooltip.potionrelicsmod.swiftnessrelic");
     }
 
     /**

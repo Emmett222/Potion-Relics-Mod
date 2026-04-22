@@ -22,10 +22,7 @@ public class FireResistanceRelic extends BaseRelic {
         super(pProperties,
                 MobEffects.FIRE_RESISTANCE,
                 70,
-                "tooltip.potionrelicsmod.fireresistancerelic",
-                ModConfigs.fireResistanceLevel,
-                ModConfigs.fireResistanceUpgrade,
-                ModConfigs.fireResistanceParticles);
+                "tooltip.potionrelicsmod.fireresistancerelic");
     }
 
     /**

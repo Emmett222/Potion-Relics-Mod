@@ -22,10 +22,7 @@ public class RegenerationRelic extends BaseRelic {
         super(pProperties,
                 MobEffects.REGENERATION,
                 70,
-                "tooltip.potionrelicsmod.regenerationrelic",
-                ModConfigs.regenerationLevel,
-                ModConfigs.regenerationUpgrade,
-                ModConfigs.regenerationParticles);
+                "tooltip.potionrelicsmod.regenerationrelic");
     }
 
     /**

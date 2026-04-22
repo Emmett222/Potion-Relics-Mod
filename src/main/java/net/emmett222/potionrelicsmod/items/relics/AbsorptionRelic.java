@@ -28,7 +28,7 @@ public class AbsorptionRelic extends BaseRelic {
      * @param pProperties The pProperties to be used.
      */
     public AbsorptionRelic(Properties pProperties) {
-        super(pProperties, MobEffects.ABSORPTION, 0, "tooltip.potionrelicsmod.absorptionrelic", 0, false, false);
+        super(pProperties, MobEffects.ABSORPTION, 0, "tooltip.potionrelicsmod.absorptionrelic");
     }
 
     /**
@@ -59,38 +59,13 @@ public class AbsorptionRelic extends BaseRelic {
     }
 
     /**
-     * Sets the tooltip and makes it italic.
+     * Returns Absorption level based off of hearts. Calculated by absorptionAmount divided by 4.
      * 
-     * @param pStack             The pStack to be used.
-     * @param pLevel             the pLevel to be used.
-     * @param pTooltipComponents The pTooltipComponents to be used. Will be updated
-     *                           by this function.
-     */
-    @Override
-    public void appendHoverText(ItemStack pStack, Level pLevel, List<Component> pTooltipComponents,
-            TooltipFlag pIsAdvanced) {
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-
-        Component desComp = Component.translatable(tooltip)
-                .withStyle(ChatFormatting.ITALIC);
-        Component inventoryComp = Component.translatable("tooltip.potionrelicsmod.inventory_Absorption",
-                effect.getDisplayName().getString(),
-                ModConfigs.absorptionAmount)
-                .withStyle(ChatFormatting.GRAY);
-
-        pTooltipComponents.add(desComp);
-        pTooltipComponents.add(Component.empty());
-        pTooltipComponents.add(inventoryComp);
-    }
-
-    /**
-     * Does nothing since this Relic does not use BaseRelic's inventoryTick()
-     * method.
-     * * @return Always returns -1.
+     * @return Returns Absorption level based off of hearts.
      */
     @Override
     protected int getConfigAmplifier() {
-        return -1;
+        return (int) (ModConfigs.absorptionAmount / 4) - 1;
     }
 
     /**

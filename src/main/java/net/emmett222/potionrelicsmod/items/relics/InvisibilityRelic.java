@@ -22,10 +22,7 @@ public class InvisibilityRelic extends BaseRelic {
         super(pProperties,
                 MobEffects.INVISIBILITY,
                 280,
-                "tooltip.potionrelicsmod.invisibilityrelic",
-                ModConfigs.invisibilityLevel,
-                ModConfigs.invisibilityUpgrade,
-                ModConfigs.invisibilityParticles);
+                "tooltip.potionrelicsmod.invisibilityrelic");
     }
 
     /**

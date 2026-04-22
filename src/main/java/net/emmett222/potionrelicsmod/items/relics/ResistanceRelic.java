@@ -21,10 +21,7 @@ public class ResistanceRelic extends BaseRelic {
         super(pProperties,
                 MobEffects.DAMAGE_RESISTANCE,
                 70,
-                "tooltip.potionrelicsmod.resistancerelic",
-                ModConfigs.resistanceLevel,
-                ModConfigs.resistanceUpgrade,
-                ModConfigs.resistanceParticles);
+                "tooltip.potionrelicsmod.resistancerelic");
     }
 
     /**

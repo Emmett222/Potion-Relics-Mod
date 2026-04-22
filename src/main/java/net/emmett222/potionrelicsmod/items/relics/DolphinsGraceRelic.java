@@ -22,10 +22,7 @@ public class DolphinsGraceRelic extends BaseRelic {
         super(pProperties,
                 MobEffects.DOLPHINS_GRACE,
                 70,
-                "tooltip.potionrelicsmod.dolphinsgracerelic",
-                ModConfigs.dolphinsGraceLevel,
-                ModConfigs.dolphinsGraceUpgrade,
-                ModConfigs.dolphinsGraceParticles);
+                "tooltip.potionrelicsmod.dolphinsgracerelic");
     }
 
     /**

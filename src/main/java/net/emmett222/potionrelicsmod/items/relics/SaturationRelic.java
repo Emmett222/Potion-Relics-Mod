@@ -21,10 +21,7 @@ public class SaturationRelic extends BaseRelic {
         super(pProperties,
                 MobEffects.SATURATION,
                 70,
-                "tooltip.potionrelicsmod.saturationrelic",
-                ModConfigs.saturationLevel,
-                ModConfigs.saturationUpgrade,
-                ModConfigs.saturationParticles);
+                "tooltip.potionrelicsmod.saturationrelic");
     }
 
     /**

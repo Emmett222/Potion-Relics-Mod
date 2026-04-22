@@ -22,10 +22,7 @@ public class NightVisionRelic extends BaseRelic {
         super(pProperties,
                 MobEffects.NIGHT_VISION,
                 280,
-                "tooltip.potionrelicsmod.nightvisionrelic",
-                ModConfigs.nightVisionLevel,
-                ModConfigs.nightVisionUpgrade,
-                ModConfigs.nightVisionParticles);
+                "tooltip.potionrelicsmod.nightvisionrelic");
     }
 
     /**
