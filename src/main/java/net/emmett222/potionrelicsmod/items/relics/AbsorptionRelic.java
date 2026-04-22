@@ -3,8 +3,6 @@ package net.emmett222.potionrelicsmod.items.relics;
 import net.emmett222.potionrelicsmod.configs.ModConfigs;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
@@ -28,9 +26,8 @@ public class AbsorptionRelic extends BaseRelic {
 
     /**
      * Called each tick as long as the relic is in the inventory.
-     * Gives the effect, if the item holder is a player of course.
-     * Absorption has a special inventoryTick because the normal one with Absorption
-     * makes the player invincible.
+     * Absorption is handled centrally in ModEvents so the relic can coexist cleanly
+     * with vanilla absorption sources like golden apples.
      * 
      * @param pStack      The ItemStack to be used. Not used in the override.
      * @param pLevel      The pLevel to be used. Not used in the override.
@@ -41,20 +38,7 @@ public class AbsorptionRelic extends BaseRelic {
      */
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
-        if (!isEnabled(pStack)) {
-            return;
-        }
-
-        // If the entity is not a player, do nothing to it.
-        if (pEntity.getType() != EntityType.PLAYER) {
-            return;
-        }
-        if (pEntity instanceof Player living) {
-            if ((living.getAbsorptionAmount() == 0.0) && !living.getCooldowns().isOnCooldown(this)) {
-                living.setAbsorptionAmount(ModConfigs.absorptionAmount);
-                living.getCooldowns().addCooldown(this, ModConfigs.absorptionCooldown);
-            }
-        }
+        // Managed in ModEvents.
     }
 
     /**

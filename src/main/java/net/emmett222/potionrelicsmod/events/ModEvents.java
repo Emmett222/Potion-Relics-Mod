@@ -1,9 +1,12 @@
 package net.emmett222.potionrelicsmod.events;
 
+import net.emmett222.potionrelicsmod.configs.ModConfigs;
+import net.emmett222.potionrelicsmod.items.ModItems;
 import net.emmett222.potionrelicsmod.PotionRelicsMod;
 import net.emmett222.potionrelicsmod.items.relics.AbsorptionRelic;
 import net.emmett222.potionrelicsmod.items.relics.BaseRelic;
 import net.emmett222.potionrelicsmod.items.relics.InvisibilityRelic;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.PotionColorCalculationEvent;
@@ -30,30 +33,46 @@ public class ModEvents {
      */
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        if (event.phase != TickEvent.Phase.END || event.player.level().isClientSide) {
+            return;
+        }
+
         Player player = event.player;
+        boolean hasRelic = hasAbsorptionRelic(player);
+        float vanillaAbsorption = getVanillaAbsorptionAmount(player);
+        float desiredAbsorption = vanillaAbsorption + ModConfigs.absorptionAmount;
 
-        // Check if the player currently has absorption hearts
-        if (player.getAbsorptionAmount() > 0) {
-
-            // Scan the inventory for Absorption Relic.
-            boolean hasRelic = false;
-            for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
-                if (player.getInventory().getItem(i).getItem() instanceof AbsorptionRelic
-                        && BaseRelic.isEnabled(player.getInventory().getItem(i))) {
-                    hasRelic = true;
-                    break;
-                }
+        if (hasRelic) {
+            if (player.getAbsorptionAmount() < desiredAbsorption
+                    && !player.getCooldowns().isOnCooldown(ModItems.ABSORPTIONRELIC.get())) {
+                player.setAbsorptionAmount(desiredAbsorption);
+                player.getCooldowns().addCooldown(ModItems.ABSORPTIONRELIC.get(), ModConfigs.absorptionCooldown);
             }
+            return;
+        }
 
-            // If they have hearts but NO relic, wipe the hearts.
-            if (!hasRelic) {
-                // To be safe, check if they have the ABSORPTION potion effect too. To not
-                // remove golden apple hearts.
-                if (!player.hasEffect(MobEffects.ABSORPTION)) {
-                    player.setAbsorptionAmount(0.0f);
-                }
+        if (player.getAbsorptionAmount() > vanillaAbsorption) {
+            player.setAbsorptionAmount(vanillaAbsorption);
+        }
+    }
+
+    private static boolean hasAbsorptionRelic(Player player) {
+        for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
+            if (player.getInventory().getItem(i).getItem() instanceof AbsorptionRelic
+                    && BaseRelic.isEnabled(player.getInventory().getItem(i))) {
+                return true;
             }
         }
+        return false;
+    }
+
+    private static float getVanillaAbsorptionAmount(Player player) {
+        MobEffectInstance absorptionEffect = player.getEffect(MobEffects.ABSORPTION);
+        if (absorptionEffect == null) {
+            return 0.0f;
+        }
+
+        return 4.0f * (absorptionEffect.getAmplifier() + 1);
     }
 
     /**
