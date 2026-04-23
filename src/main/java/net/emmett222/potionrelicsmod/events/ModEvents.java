@@ -2,8 +2,11 @@ package net.emmett222.potionrelicsmod.events;
 
 import net.emmett222.potionrelicsmod.PotionRelicsMod;
 import net.emmett222.potionrelicsmod.items.relics.AbsorptionRelic;
+import net.emmett222.potionrelicsmod.items.relics.BaseRelic;
+import net.emmett222.potionrelicsmod.items.relics.InvisibilityRelic;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.event.entity.living.PotionColorCalculationEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -35,7 +38,8 @@ public class ModEvents {
             // Scan the inventory for Absorption Relic.
             boolean hasRelic = false;
             for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
-                if (player.getInventory().getItem(i).getItem() instanceof AbsorptionRelic) {
+                if (player.getInventory().getItem(i).getItem() instanceof AbsorptionRelic
+                        && BaseRelic.isEnabled(player.getInventory().getItem(i))) {
                     hasRelic = true;
                     break;
                 }
@@ -52,5 +56,16 @@ public class ModEvents {
         }
     }
 
-    
+    /**
+     * Hides all potion particles while the invisibility relic is actively hiding a
+     * player.
+     * 
+     * @param event The potion color calculation event.
+     */
+    @SubscribeEvent
+    public static void onPotionColorCalculation(PotionColorCalculationEvent event) {
+        if (event.getEntity() instanceof Player player && InvisibilityRelic.shouldHidePlayer(player)) {
+            event.shouldHideParticles(true);
+        }
+    }
 }

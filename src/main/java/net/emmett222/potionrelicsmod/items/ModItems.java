@@ -12,50 +12,54 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS,
             PotionRelicsMod.MOD_ID);
 
+    private static Item.Properties relicProperties() {
+        return new Item.Properties().stacksTo(1);
+    }
+
     public static final RegistryObject<Item> ABSORPTIONRELIC = ITEMS.register("absorptionrelic",
-            () -> new AbsorptionRelic(new Item.Properties()));
+            () -> new AbsorptionRelic(relicProperties()));
 
     public static final RegistryObject<Item> DOLPHINSGRACERELIC = ITEMS.register("dolphinsgracerelic",
-            () -> new DolphinsGraceRelic(new Item.Properties()));
+            () -> new DolphinsGraceRelic(relicProperties()));
 
     public static final RegistryObject<Item> FIRERESISTANCERELIC = ITEMS.register("fireresistancerelic",
-            () -> new FireResistanceRelic(new Item.Properties()));
+            () -> new FireResistanceRelic(relicProperties()));
 
     public static final RegistryObject<Item> HASTERELIC = ITEMS.register("hasterelic",
-            () -> new HasteRelic(new Item.Properties()));
+            () -> new HasteRelic(relicProperties()));
 
     public static final RegistryObject<Item> HEROOFTHEVILLAGERELIC = ITEMS.register("heroofthevillagerelic",
-            () -> new HeroOfTheVillageRelic(new Item.Properties()));
+            () -> new HeroOfTheVillageRelic(relicProperties()));
 
     public static final RegistryObject<Item> INVISIBILITYRELIC = ITEMS.register("invisibilityrelic",
-            () -> new InvisibilityRelic(new Item.Properties()));
+            () -> new InvisibilityRelic(relicProperties()));
 
     public static final RegistryObject<Item> JUMPBOOSTRELIC = ITEMS.register("jumpboostrelic",
-            () -> new JumpBoostRelic(new Item.Properties()));
+            () -> new JumpBoostRelic(relicProperties()));
 
     public static final RegistryObject<Item> NIGHTVISIONRELIC = ITEMS.register("nightvisionrelic",
-            () -> new NightVisionRelic(new Item.Properties()));
+            () -> new NightVisionRelic(relicProperties()));
 
     public static final RegistryObject<Item> REGENERATIONRELIC = ITEMS.register("regenerationrelic",
-            () -> new RegenerationRelic(new Item.Properties()));
+            () -> new RegenerationRelic(relicProperties()));
 
     public static final RegistryObject<Item> RESISTANCERELIC = ITEMS.register("resistancerelic",
-            () -> new ResistanceRelic(new Item.Properties()));
+            () -> new ResistanceRelic(relicProperties()));
 
     public static final RegistryObject<Item> SATURATIONRELIC = ITEMS.register("saturationrelic",
-            () -> new SaturationRelic(new Item.Properties()));
+            () -> new SaturationRelic(relicProperties()));
 
     public static final RegistryObject<Item> SLOWFALLINGRELIC = ITEMS.register("slowfallingrelic",
-            () -> new SlowFallingRelic(new Item.Properties()));
+            () -> new SlowFallingRelic(relicProperties()));
 
     public static final RegistryObject<Item> STRENGTHRELIC = ITEMS.register("strengthrelic",
-            () -> new StrengthRelic(new Item.Properties()));
+            () -> new StrengthRelic(relicProperties()));
 
     public static final RegistryObject<Item> SWIFTNESSRELIC = ITEMS.register("swiftnessrelic",
-            () -> new SwiftnessRelic(new Item.Properties()));
+            () -> new SwiftnessRelic(relicProperties()));
 
     public static final RegistryObject<Item> WATERBREATHINGRELIC = ITEMS.register("waterbreathingrelic",
-            () -> new WaterBreathingRelic(new Item.Properties()));
+            () -> new WaterBreathingRelic(relicProperties()));
 
             
 

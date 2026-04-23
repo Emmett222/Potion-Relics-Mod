@@ -41,6 +41,10 @@ public class AbsorptionRelic extends BaseRelic {
      */
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
+        if (!isEnabled(pStack)) {
+            return;
+        }
+
         // If the entity is not a player, do nothing to it.
         if (pEntity.getType() != EntityType.PLAYER) {
             return;

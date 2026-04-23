@@ -32,8 +32,27 @@
     "tooltip.potionrelicsmod.waterbreathingrelic": "You grow unnatural gills capable of breathing freshwater and saltwater.",
 
     "tooltip.potionrelicsmod.inventory": "When in inventory:",
+    "tooltip.potionrelicsmod.main_hand": "When in main hand:",
     "tooltip.potionrelicsmod.off_hand": "When in offhand:",
+    "tooltip.potionrelicsmod.enabled": "Status: Enabled",
+    "tooltip.potionrelicsmod.disabled": "Status: Disabled",
+    "tooltip.potionrelicsmod.toggle_held": "Shift + Right Click while held to toggle.",
+    "tooltip.potionrelicsmod.toggle_inventory": "Hover in inventory and press V to toggle.",
+    "tooltip.potionrelicsmod.invisibilityrelic_hidden": "Hides the held relic, arm, and player model while active.",
     "tooltip.potionrelicsmod.inventory_Absorption": "Anywhere in inventory: +%s health",
+
+    "message.potionrelicsmod.relic_enabled": "%s enabled",
+    "message.potionrelicsmod.relic_disabled": "%s disabled",
+
+    "key.potionrelicsmod.toggle_relic": "Toggle Hovered Relic",
+    "key.categories.potionrelicsmod": "Potion Relics",
+
+    "screen.potionrelicsmod.relic_panel": "Relics",
+    "screen.potionrelicsmod.relic_panel_empty": "No relics found.",
+    "screen.potionrelicsmod.relic_panel_click": "Click a relic to toggle.",
+    "screen.potionrelicsmod.relic_panel_scroll": "Scroll for more relics.",
+    "screen.potionrelicsmod.relic_tab_open": "Relics -",
+    "screen.potionrelicsmod.relic_tab_closed": "Relics +",
 
     "creativetab.potionrelicstab": "Potion Relics"
 }

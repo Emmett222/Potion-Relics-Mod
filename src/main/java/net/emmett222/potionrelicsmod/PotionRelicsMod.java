@@ -5,6 +5,7 @@ import com.mojang.logging.LogUtils;
 import net.emmett222.potionrelicsmod.configs.ModConfigs;
 import net.emmett222.potionrelicsmod.items.ModCreativeModeTabs;
 import net.emmett222.potionrelicsmod.items.ModItems;
+import net.emmett222.potionrelicsmod.network.ModMessages;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -42,7 +43,7 @@ public class PotionRelicsMod {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
+        event.enqueueWork(ModMessages::register);
     }
 
     /**
