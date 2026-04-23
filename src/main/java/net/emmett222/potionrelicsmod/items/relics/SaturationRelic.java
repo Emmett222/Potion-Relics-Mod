@@ -15,7 +15,7 @@ import net.minecraft.world.level.Level;
  * @version 4-21-2026
  */
 public class SaturationRelic extends BaseRelic {
-    private static final int FOOD_REFILL_INTERVAL = 40;
+    private static final int DEFAULT_FOOD_REFILL_INTERVAL = 40;
 
     /**
      * Explicit constructor.
@@ -26,7 +26,7 @@ public class SaturationRelic extends BaseRelic {
     public SaturationRelic(Properties pProperties) {
         super(pProperties,
                 MobEffects.SATURATION,
-                FOOD_REFILL_INTERVAL,
+                DEFAULT_FOOD_REFILL_INTERVAL,
                 "tooltip.potionrelicsmod.saturationrelic");
     }
 
@@ -59,7 +59,7 @@ public class SaturationRelic extends BaseRelic {
             }
 
             player.getFoodData().setFoodLevel(Math.min(20, foodLevel + foodRestore));
-            player.getCooldowns().addCooldown(this, FOOD_REFILL_INTERVAL);
+            player.getCooldowns().addCooldown(this, ModConfigs.saturationRefillInterval);
         }
     }
 

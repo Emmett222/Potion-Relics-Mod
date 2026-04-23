@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import net.emmett222.potionrelicsmod.PotionRelicsMod;
+import net.emmett222.potionrelicsmod.configs.ModConfigs;
 import net.emmett222.potionrelicsmod.items.relics.BaseRelic;
 import net.emmett222.potionrelicsmod.network.ModMessages;
 import net.emmett222.potionrelicsmod.network.ToggleRelicPacket;
@@ -56,7 +57,9 @@ public class ClientRelicPanelEvents {
      */
     @SubscribeEvent
     public static void onScreenRender(ScreenEvent.Render.Post event) {
-        if (!(event.getScreen() instanceof InventoryScreen screen)) {
+        if (!ModConfigs.relicTogglingEnabled
+                || !ModConfigs.inventoryRelicPanelEnabled
+                || !(event.getScreen() instanceof InventoryScreen screen)) {
             return;
         }
 
@@ -86,7 +89,10 @@ public class ClientRelicPanelEvents {
      */
     @SubscribeEvent
     public static void onMouseButtonPressed(ScreenEvent.MouseButtonPressed.Pre event) {
-        if (event.getButton() != 0 || !(event.getScreen() instanceof InventoryScreen screen)) {
+        if (!ModConfigs.relicTogglingEnabled
+                || !ModConfigs.inventoryRelicPanelEnabled
+                || event.getButton() != 0
+                || !(event.getScreen() instanceof InventoryScreen screen)) {
             return;
         }
 
@@ -134,7 +140,9 @@ public class ClientRelicPanelEvents {
      */
     @SubscribeEvent
     public static void onMouseScrolled(ScreenEvent.MouseScrolled.Pre event) {
-        if (!(event.getScreen() instanceof InventoryScreen screen)) {
+        if (!ModConfigs.relicTogglingEnabled
+                || !ModConfigs.inventoryRelicPanelEnabled
+                || !(event.getScreen() instanceof InventoryScreen screen)) {
             return;
         }
 

@@ -17,6 +17,10 @@ public class ModConfigs {
         public static final ForgeConfigSpec.ConfigValue<Integer> ABSORPTION_RELIC_COOLDOWN;
         public static final ForgeConfigSpec.ConfigValue<Long> ABSORPTION_AMOUNT;
 
+        // Interactions
+        public static final ForgeConfigSpec.ConfigValue<Boolean> RELIC_TOGGLING_ENABLED;
+        public static final ForgeConfigSpec.ConfigValue<Boolean> INVENTORY_RELIC_PANEL_ENABLED;
+
         // Dolphin's Grace
         public static final ForgeConfigSpec.ConfigValue<Integer> DOLPHINS_GRACE_LEVEL;
         public static final ForgeConfigSpec.ConfigValue<Boolean> DOLPHINS_GRACE_UPGRADE;
@@ -41,6 +45,8 @@ public class ModConfigs {
         public static final ForgeConfigSpec.ConfigValue<Integer> INVISIBILITY_LEVEL;
         public static final ForgeConfigSpec.ConfigValue<Boolean> INVISIBILITY_UPGRADE;
         public static final ForgeConfigSpec.ConfigValue<Boolean> INVISIBILITY_PARTICLES;
+        public static final ForgeConfigSpec.ConfigValue<Boolean> INVISIBILITY_REQUIRES_MAIN_HAND;
+        public static final ForgeConfigSpec.ConfigValue<Boolean> INVISIBILITY_HIDE_PLAYER_RENDER;
 
         // Invisibility
         public static final ForgeConfigSpec.ConfigValue<Integer> JUMP_BOOST_LEVEL;
@@ -66,6 +72,7 @@ public class ModConfigs {
         public static final ForgeConfigSpec.ConfigValue<Integer> SATURATION_LEVEL;
         public static final ForgeConfigSpec.ConfigValue<Boolean> SATURATION_UPGRADE;
         public static final ForgeConfigSpec.ConfigValue<Boolean> SATURATION_PARTICLES;
+        public static final ForgeConfigSpec.ConfigValue<Integer> SATURATION_REFILL_INTERVAL;
 
         // Slow Falling
         public static final ForgeConfigSpec.ConfigValue<Integer> SLOW_FALLING_LEVEL;
@@ -93,12 +100,14 @@ public class ModConfigs {
 
         public static int absorptionCooldown, dolphinsGraceLevel, fireResistanceLevel, hasteLevel,
                         heroOfTheVillageLevel, invisibilityLevel, jumpBoostLevel,
-                        nightVisionLevel, regenerationLevel, resistanceLevel, saturationLevel, slowFallingLevel, strengthLevel,
-                        swiftnessLevel, waterBreathingLevel;
+                        nightVisionLevel, regenerationLevel, resistanceLevel, saturationLevel, saturationRefillInterval,
+                        slowFallingLevel, strengthLevel, swiftnessLevel, waterBreathingLevel;
 
-        public static boolean absorptionUpgrade, dolphinsGraceUpgrade, fireResistanceUpgrade, hasteUpgrade,
+        public static boolean relicTogglingEnabled, inventoryRelicPanelEnabled, absorptionUpgrade, dolphinsGraceUpgrade,
+                        fireResistanceUpgrade, hasteUpgrade,
                         heroOfTheVillageUpgrade,
-                        invisibilityUpgrade, jumpBoostUpgrade, nightVisionUpgrade, regenerationUpgrade, resistanceUpgrade,
+                        invisibilityUpgrade, invisibilityRequiresMainHand, invisibilityHidePlayerRender,
+                        jumpBoostUpgrade, nightVisionUpgrade, regenerationUpgrade, resistanceUpgrade,
                         saturationUpgrade, slowFallingUpgrade,
                         strengthUpgrade, swiftnessUpgrade, waterBreathingUpgrade;
 
@@ -122,6 +131,16 @@ public class ModConfigs {
                 ABSORPTION_AMOUNT = BUILDER
                                 .comment("How many absorption points (half-hearts) the relic gives")
                                 .defineInRange("absorptionAmount", 16L, 0L, 2048L);
+                BUILDER.pop();
+
+                // --- INTERACTIONS ---
+                BUILDER.push("Relic Interactions");
+                RELIC_TOGGLING_ENABLED = BUILDER
+                                .comment("Allow players to enable or disable relics")
+                                .define("relicTogglingEnabled", true);
+                INVENTORY_RELIC_PANEL_ENABLED = BUILDER
+                                .comment("Show the relic toggle panel in the player inventory")
+                                .define("inventoryRelicPanelEnabled", true);
                 BUILDER.pop();
 
                 // --- DOLPHIN'S GRACE ---
@@ -168,6 +187,12 @@ public class ModConfigs {
                 INVISIBILITY_PARTICLES = BUILDER.comment("Invisibility Relic shows particles").define(
                                 "invisibilityParticles",
                                 true);
+                INVISIBILITY_REQUIRES_MAIN_HAND = BUILDER
+                                .comment("Invisibility relic only works while held in the main hand")
+                                .define("invisibilityRequiresMainHand", true);
+                INVISIBILITY_HIDE_PLAYER_RENDER = BUILDER
+                                .comment("Hide the held relic, arm, and player model while invisibility is active")
+                                .define("invisibilityHidePlayerRender", true);
                 BUILDER.pop();
 
                 // --- JUMP BOOST ---
@@ -208,6 +233,9 @@ public class ModConfigs {
                                 .defineInRange("saturationLevel", 0, 0, 254);
                 SATURATION_UPGRADE = BUILDER.comment("Can upgrade in offhand").define("saturationUpgrade", true);
                 SATURATION_PARTICLES = BUILDER.comment("Show potion swirls?").define("saturationParticles", false);
+                SATURATION_REFILL_INTERVAL = BUILDER
+                                .comment("Ticks between hunger refills from the saturation relic")
+                                .defineInRange("saturationRefillInterval", 40, 1, 72000);
                 BUILDER.pop();
 
                 // --- SLOW FALLING ---
@@ -258,6 +286,10 @@ public class ModConfigs {
                 absorptionAmount = Math.max(0, ABSORPTION_AMOUNT.get());
                 absorptionCooldown = Math.max(0, ABSORPTION_RELIC_COOLDOWN.get());
 
+                // Interactions
+                relicTogglingEnabled = RELIC_TOGGLING_ENABLED.get();
+                inventoryRelicPanelEnabled = INVENTORY_RELIC_PANEL_ENABLED.get();
+
                 // Dolphin's Grace
                 dolphinsGraceLevel = Math.max(0, DOLPHINS_GRACE_LEVEL.get());
                 dolphinsGraceUpgrade = DOLPHINS_GRACE_UPGRADE.get();
@@ -282,6 +314,8 @@ public class ModConfigs {
                 invisibilityLevel = Math.max(0, INVISIBILITY_LEVEL.get());
                 invisibilityUpgrade = INVISIBILITY_UPGRADE.get();
                 invisibilityParticles = INVISIBILITY_PARTICLES.get();
+                invisibilityRequiresMainHand = INVISIBILITY_REQUIRES_MAIN_HAND.get();
+                invisibilityHidePlayerRender = INVISIBILITY_HIDE_PLAYER_RENDER.get();
 
                 // Jump Boost
                 jumpBoostLevel = Math.max(0, JUMP_BOOST_LEVEL.get());
@@ -307,6 +341,7 @@ public class ModConfigs {
                 saturationLevel = Math.max(0, SATURATION_LEVEL.get());
                 saturationUpgrade = SATURATION_UPGRADE.get();
                 saturationParticles = SATURATION_PARTICLES.get();
+                saturationRefillInterval = Math.max(1, SATURATION_REFILL_INTERVAL.get());
 
                 // Slow Falling
                 slowFallingLevel = Math.max(0, SLOW_FALLING_LEVEL.get());

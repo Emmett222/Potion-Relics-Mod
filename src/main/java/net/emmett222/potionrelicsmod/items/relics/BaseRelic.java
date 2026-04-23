@@ -2,6 +2,7 @@ package net.emmett222.potionrelicsmod.items.relics;
 
 import java.util.List;
 
+import net.emmett222.potionrelicsmod.configs.ModConfigs;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -75,6 +76,10 @@ public abstract class BaseRelic extends Item {
      * @return True if enabled, false otherwise.
      */
     public static boolean isEnabled(ItemStack stack) {
+        if (!ModConfigs.relicTogglingEnabled) {
+            return true;
+        }
+
         CompoundTag tag = stack.getTag();
         return tag == null || !tag.contains(ENABLED_TAG) || tag.getBoolean(ENABLED_TAG);
     }
@@ -187,7 +192,7 @@ public abstract class BaseRelic extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         ItemStack stack = pPlayer.getItemInHand(pUsedHand);
-        if (!pPlayer.isShiftKeyDown()) {
+        if (!ModConfigs.relicTogglingEnabled || !pPlayer.isShiftKeyDown()) {
             return InteractionResultHolder.pass(stack);
         }
 
@@ -219,7 +224,7 @@ public abstract class BaseRelic extends Item {
      */
     @Override
     public boolean isFoil(ItemStack pStack) {
-        return isEnabled(pStack);
+        return !ModConfigs.relicTogglingEnabled || isEnabled(pStack);
     }
 
     /**
@@ -229,6 +234,10 @@ public abstract class BaseRelic extends Item {
      * @param pTooltipComponents The tooltip components to update.
      */
     protected void addToggleTooltip(ItemStack pStack, List<Component> pTooltipComponents) {
+        if (!ModConfigs.relicTogglingEnabled) {
+            return;
+        }
+
         Component statusComp = Component
                 .translatable(isEnabled(pStack) ? "tooltip.potionrelicsmod.enabled" : "tooltip.potionrelicsmod.disabled")
                 .withStyle(isEnabled(pStack) ? ChatFormatting.GREEN : ChatFormatting.RED);

@@ -83,7 +83,7 @@ public class ModEvents {
      */
     @SubscribeEvent
     public static void onPotionColorCalculation(PotionColorCalculationEvent event) {
-        if (event.getEntity() instanceof Player player && InvisibilityRelic.shouldHidePlayer(player)) {
+        if (event.getEntity() instanceof Player player && InvisibilityRelic.isRelicActive(player)) {
             event.shouldHideParticles(true);
         }
     }

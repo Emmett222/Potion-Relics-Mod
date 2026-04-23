@@ -10,6 +10,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
@@ -38,19 +39,47 @@ public class InvisibilityRelic extends BaseRelic {
     }
 
     /**
-     * Returns whether the relic is actively hiding a player.
+     * Returns whether the relic is actively granting invisibility.
      * 
      * @param living The living entity to check.
-     * @return True if the relic is in the main hand and invisibility is active.
+     * @return True if the relic conditions are met and invisibility is active.
+     */
+    public static boolean isRelicActive(LivingEntity living) {
+        return hasActiveInvisibilityRelic(living) && living.hasEffect(MobEffects.INVISIBILITY);
+    }
+
+    /**
+     * Returns whether the relic should hide the player model and held item.
+     * 
+     * @param living The living entity to check.
+     * @return True if render hiding is enabled and the relic is active.
      */
     public static boolean shouldHidePlayer(LivingEntity living) {
-        return isInvisibilityRelic(living.getMainHandItem())
-                && BaseRelic.isEnabled(living.getMainHandItem())
-                && living.hasEffect(MobEffects.INVISIBILITY);
+        return ModConfigs.invisibilityHidePlayerRender && isRelicActive(living);
     }
 
     private static boolean isInvisibilityRelic(ItemStack stack) {
         return stack.getItem() instanceof InvisibilityRelic;
+    }
+
+    private static boolean hasActiveInvisibilityRelic(LivingEntity living) {
+        if (ModConfigs.invisibilityRequiresMainHand) {
+            return isInvisibilityRelic(living.getMainHandItem())
+                    && BaseRelic.isEnabled(living.getMainHandItem());
+        }
+
+        if (!(living instanceof Player player)) {
+            return false;
+        }
+
+        for (int slot = 0; slot < player.getInventory().getContainerSize(); slot++) {
+            ItemStack stack = player.getInventory().getItem(slot);
+            if (isInvisibilityRelic(stack) && BaseRelic.isEnabled(stack)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -71,7 +100,11 @@ public class InvisibilityRelic extends BaseRelic {
         }
 
         if (pEntity instanceof LivingEntity living) {
-            if (!BaseRelic.isEnabled(pStack) || pStack != living.getMainHandItem()) {
+            if (!BaseRelic.isEnabled(pStack)) {
+                return;
+            }
+
+            if (ModConfigs.invisibilityRequiresMainHand && pStack != living.getMainHandItem()) {
                 return;
             }
 
@@ -134,11 +167,16 @@ public class InvisibilityRelic extends BaseRelic {
         pTooltipComponents.clear();
         pTooltipComponents.add(Component.translatable(tooltip).withStyle(ChatFormatting.ITALIC));
         pTooltipComponents.add(Component.empty());
-        pTooltipComponents.add(Component.translatable("tooltip.potionrelicsmod.main_hand").withStyle(ChatFormatting.GRAY));
+        pTooltipComponents.add(Component.translatable(
+                ModConfigs.invisibilityRequiresMainHand ? "tooltip.potionrelicsmod.main_hand"
+                        : "tooltip.potionrelicsmod.inventory")
+                .withStyle(ChatFormatting.GRAY));
         pTooltipComponents.add(Component.translatable(effect.getDisplayName().getString() + " " + (getConfigAmplifier() + 1))
                 .withStyle(ChatFormatting.DARK_GREEN));
-        pTooltipComponents
-                .add(Component.translatable("tooltip.potionrelicsmod.invisibilityrelic_hidden").withStyle(ChatFormatting.DARK_GRAY));
+        if (ModConfigs.invisibilityHidePlayerRender) {
+            pTooltipComponents.add(
+                    Component.translatable("tooltip.potionrelicsmod.invisibilityrelic_hidden").withStyle(ChatFormatting.DARK_GRAY));
+        }
         addToggleTooltip(pStack, pTooltipComponents);
     }
 }

@@ -5,6 +5,7 @@ import org.lwjgl.glfw.GLFW;
 import com.mojang.blaze3d.platform.InputConstants;
 
 import net.emmett222.potionrelicsmod.PotionRelicsMod;
+import net.emmett222.potionrelicsmod.configs.ModConfigs;
 import net.emmett222.potionrelicsmod.items.relics.BaseRelic;
 import net.emmett222.potionrelicsmod.network.ModMessages;
 import net.emmett222.potionrelicsmod.network.ToggleRelicPacket;
@@ -48,7 +49,7 @@ public class ClientToggleEvents {
     public static class ScreenInput {
         @SubscribeEvent
         public static void onScreenKeyPressed(ScreenEvent.KeyPressed.Pre event) {
-            if (!(event.getScreen() instanceof AbstractContainerScreen<?> screen)) {
+            if (!ModConfigs.relicTogglingEnabled || !(event.getScreen() instanceof AbstractContainerScreen<?> screen)) {
                 return;
             }
 

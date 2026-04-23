@@ -2,6 +2,7 @@ package net.emmett222.potionrelicsmod.network;
 
 import java.util.function.Supplier;
 
+import net.emmett222.potionrelicsmod.configs.ModConfigs;
 import net.emmett222.potionrelicsmod.items.relics.BaseRelic;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
@@ -35,7 +36,7 @@ public class ToggleRelicPacket {
         NetworkEvent.Context context = contextSupplier.get();
         context.enqueueWork(() -> {
             ServerPlayer player = context.getSender();
-            if (player == null || !player.containerMenu.isValidSlotIndex(packet.slotId)) {
+            if (!ModConfigs.relicTogglingEnabled || player == null || !player.containerMenu.isValidSlotIndex(packet.slotId)) {
                 return;
             }
 
