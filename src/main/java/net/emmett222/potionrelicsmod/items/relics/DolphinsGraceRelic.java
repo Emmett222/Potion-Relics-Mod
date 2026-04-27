@@ -21,7 +21,7 @@ public class DolphinsGraceRelic extends BaseRelic {
     public DolphinsGraceRelic(Properties pProperties) {
         super(pProperties,
                 MobEffects.DOLPHINS_GRACE,
-                70,
+                40,
                 "tooltip.potionrelicsmod.dolphinsgracerelic");
     }
 

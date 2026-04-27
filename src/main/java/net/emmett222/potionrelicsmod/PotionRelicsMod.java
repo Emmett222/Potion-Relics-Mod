@@ -2,9 +2,14 @@ package net.emmett222.potionrelicsmod;
 
 import com.mojang.logging.LogUtils;
 
+import net.emmett222.potionrelicsmod.blockentities.ModBlockEntities;
+import net.emmett222.potionrelicsmod.blocks.ModBlocks;
+import net.emmett222.potionrelicsmod.client.renderer.RelicShrineBlockEntityRenderer;
 import net.emmett222.potionrelicsmod.configs.ModConfigs;
 import net.emmett222.potionrelicsmod.items.ModCreativeModeTabs;
 import net.emmett222.potionrelicsmod.items.ModItems;
+import net.emmett222.potionrelicsmod.network.ModMessages;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -29,10 +34,12 @@ public class PotionRelicsMod {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Config
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ModConfigs.SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, ModConfigs.SPEC);
         
         ModCreativeModeTabs.register(modEventBus);
 
+        ModBlocks.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
         ModItems.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
@@ -42,7 +49,7 @@ public class PotionRelicsMod {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
+        event.enqueueWork(ModMessages::register);
     }
 
     /**
@@ -64,7 +71,8 @@ public class PotionRelicsMod {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
+            event.enqueueWork(() -> BlockEntityRenderers.register(ModBlockEntities.RELIC_SHRINE.get(),
+                    RelicShrineBlockEntityRenderer::new));
         }
     }
 }

@@ -21,7 +21,7 @@ public class FireResistanceRelic extends BaseRelic {
     public FireResistanceRelic(Properties pProperties) {
         super(pProperties,
                 MobEffects.FIRE_RESISTANCE,
-                70,
+                40,
                 "tooltip.potionrelicsmod.fireresistancerelic");
     }
 

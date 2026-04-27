@@ -20,7 +20,7 @@ public class ResistanceRelic extends BaseRelic {
     public ResistanceRelic(Properties pProperties) {
         super(pProperties,
                 MobEffects.DAMAGE_RESISTANCE,
-                70,
+                40,
                 "tooltip.potionrelicsmod.resistancerelic");
     }
 

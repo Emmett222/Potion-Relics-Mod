@@ -21,7 +21,7 @@ public class HeroOfTheVillageRelic extends BaseRelic {
     public HeroOfTheVillageRelic(Properties pProperties) {
         super(pProperties,
                 MobEffects.HERO_OF_THE_VILLAGE,
-                70,
+                40,
                 "tooltip.potionrelicsmod.heroofthevillagerelic");
     }
 
