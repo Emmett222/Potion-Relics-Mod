@@ -2,7 +2,9 @@ package net.emmett222.potionrelicsmod.network;
 
 import net.emmett222.potionrelicsmod.PotionRelicsMod;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkRegistry;
+import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 /**
@@ -34,6 +36,16 @@ public class ModMessages {
                 ToggleRelicPacket::encode,
                 ToggleRelicPacket::decode,
                 ToggleRelicPacket::handle);
+        INSTANCE.registerMessage(nextId(),
+                CameraShakePacket.class,
+                CameraShakePacket::encode,
+                CameraShakePacket::decode,
+                CameraShakePacket::handle);
+        INSTANCE.registerMessage(nextId(),
+                DragonWardApparitionPacket.class,
+                DragonWardApparitionPacket::encode,
+                DragonWardApparitionPacket::decode,
+                DragonWardApparitionPacket::handle);
     }
 
     /**
@@ -43,5 +55,9 @@ public class ModMessages {
      */
     public static void sendToServer(Object packet) {
         INSTANCE.sendToServer(packet);
+    }
+
+    public static void sendToPlayer(ServerPlayer player, Object packet) {
+        INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), packet);
     }
 }

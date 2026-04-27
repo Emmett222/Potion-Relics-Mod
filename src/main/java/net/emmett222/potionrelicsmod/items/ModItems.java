@@ -1,8 +1,12 @@
 package net.emmett222.potionrelicsmod.items;
 
+import java.util.List;
+
 import net.emmett222.potionrelicsmod.PotionRelicsMod;
 import net.emmett222.potionrelicsmod.items.relics.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -21,6 +25,12 @@ public class ModItems {
 
     public static final RegistryObject<Item> DOLPHINSGRACERELIC = ITEMS.register("dolphinsgracerelic",
             () -> new DolphinsGraceRelic(relicProperties()));
+
+    public static final RegistryObject<Item> DRAGONAPPARITIONDEBUG = ITEMS.register("dragonapparitiondebug",
+            () -> new DragonApparitionDebugItem(new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> DRAGONRELIC = ITEMS.register("dragonrelic",
+            () -> new DragonRelic(relicProperties()));
 
     public static final RegistryObject<Item> FIRERESISTANCERELIC = ITEMS.register("fireresistancerelic",
             () -> new FireResistanceRelic(relicProperties()));
@@ -65,6 +75,42 @@ public class ModItems {
 
     public static final RegistryObject<Item> TABICON = ITEMS.register("tabicon",
             () -> new Item(new Item.Properties().stacksTo(1)));
+
+    public static List<RegistryObject<Item>> getRelics() {
+        return List.of(
+                ABSORPTIONRELIC,
+                DOLPHINSGRACERELIC,
+                DRAGONRELIC,
+                FIRERESISTANCERELIC,
+                HASTERELIC,
+                HEROOFTHEVILLAGERELIC,
+                INVISIBILITYRELIC,
+                JUMPBOOSTRELIC,
+                NIGHTVISIONRELIC,
+                REGENERATIONRELIC,
+                RESISTANCERELIC,
+                SATURATIONRELIC,
+                SLOWFALLINGRELIC,
+                STRENGTHRELIC,
+                SWIFTNESSRELIC,
+                WATERBREATHINGRELIC);
+    }
+
+    public static List<ItemStack> getDefaultRelicStacks() {
+        return getRelics().stream()
+                .map(relic -> new ItemStack(relic.get()))
+                .toList();
+    }
+
+    public static List<ResourceLocation> getRelicIds() {
+        return getRelics().stream()
+                .map(RegistryObject::getId)
+                .toList();
+    }
+
+    public static int getRelicCount() {
+        return getRelics().size();
+    }
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

@@ -1,0 +1,9 @@
+{
+  "parent": "potionrelicsmod:block/relic_shrine_template",
+  "textures": {
+    "base": "minecraft:block/obsidian",
+    "trim": "minecraft:block/crying_obsidian",
+    "top": "minecraft:block/respawn_anchor_top",
+    "core": "minecraft:block/dragon_egg"
+  }
+}

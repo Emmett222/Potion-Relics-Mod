@@ -1,0 +1,9 @@
+{
+  "parent": "potionrelicsmod:block/relic_shrine_template",
+  "textures": {
+    "base": "minecraft:block/emerald_block",
+    "trim": "minecraft:block/chiseled_stone_bricks",
+    "top": "minecraft:block/oak_planks",
+    "core": "minecraft:block/emerald_block"
+  }
+}

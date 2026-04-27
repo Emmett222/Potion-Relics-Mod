@@ -20,11 +20,31 @@ public class ModConfigs {
         // Interactions
         public static final ForgeConfigSpec.ConfigValue<Boolean> RELIC_TOGGLING_ENABLED;
         public static final ForgeConfigSpec.ConfigValue<Boolean> INVENTORY_RELIC_PANEL_ENABLED;
+        public static final ForgeConfigSpec.ConfigValue<Boolean> RELIC_SHRINES_ENABLED;
+        public static final ForgeConfigSpec.ConfigValue<Boolean> DESTROYED_RELICS_CREATE_SHRINES;
+        public static final ForgeConfigSpec.ConfigValue<Integer> DESTROYED_RELIC_SHRINE_MIN_RADIUS;
+        public static final ForgeConfigSpec.ConfigValue<Integer> DESTROYED_RELIC_SHRINE_MAX_RADIUS;
+        public static final ForgeConfigSpec.ConfigValue<Integer> RELIC_SHRINE_HINT_STEP;
+        public static final ForgeConfigSpec.ConfigValue<Integer> RELIC_SHRINE_SEARCH_ATTEMPTS;
+        public static final ForgeConfigSpec.ConfigValue<Boolean> RELIC_SHRINE_DISCOVERY_BROADCAST;
+        public static final ForgeConfigSpec.ConfigValue<Boolean> RELIC_SHRINE_CLAIM_BROADCAST;
 
         // Dolphin's Grace
         public static final ForgeConfigSpec.ConfigValue<Integer> DOLPHINS_GRACE_LEVEL;
         public static final ForgeConfigSpec.ConfigValue<Boolean> DOLPHINS_GRACE_UPGRADE;
         public static final ForgeConfigSpec.ConfigValue<Boolean> DOLPHINS_GRACE_PARTICLES;
+
+        // Dragon
+        public static final ForgeConfigSpec.ConfigValue<Boolean> DRAGON_RELIC_DROPS_FROM_DRAGONS;
+        public static final ForgeConfigSpec.ConfigValue<Integer> DRAGON_ROAR_COOLDOWN_TICKS;
+        public static final ForgeConfigSpec.DoubleValue DRAGON_ROAR_RADIUS;
+        public static final ForgeConfigSpec.DoubleValue DRAGON_ROAR_KNOCKBACK;
+        public static final ForgeConfigSpec.ConfigValue<Integer> DRAGON_RECALL_COOLDOWN_TICKS;
+        public static final ForgeConfigSpec.ConfigValue<Integer> DRAGON_RECALL_WEAKNESS_DURATION_TICKS;
+        public static final ForgeConfigSpec.ConfigValue<Integer> DRAGON_RECALL_SLOWNESS_DURATION_TICKS;
+        public static final ForgeConfigSpec.ConfigValue<Integer> DRAGON_WARD_COOLDOWN_TICKS;
+        public static final ForgeConfigSpec.ConfigValue<Integer> DRAGON_WARD_DURATION_TICKS;
+        public static final ForgeConfigSpec.DoubleValue DRAGON_WARD_HEAL_AMOUNT;
 
         // Fire Resistance
         public static final ForgeConfigSpec.ConfigValue<Integer> FIRE_RESISTANCE_LEVEL;
@@ -89,7 +109,7 @@ public class ModConfigs {
         public static final ForgeConfigSpec.ConfigValue<Boolean> SWIFTNESS_UPGRADE;
         public static final ForgeConfigSpec.ConfigValue<Boolean> SWIFTNESS_PARTICLES;
 
-        // Water Breathing
+        // Conduit Power
         public static final ForgeConfigSpec.ConfigValue<Integer> WATER_BREATHING_LEVEL;
         public static final ForgeConfigSpec.ConfigValue<Boolean> WATER_BREATHING_UPGRADE;
         public static final ForgeConfigSpec.ConfigValue<Boolean> WATER_BREATHING_PARTICLES;
@@ -101,9 +121,17 @@ public class ModConfigs {
         public static int absorptionCooldown, dolphinsGraceLevel, fireResistanceLevel, hasteLevel,
                         heroOfTheVillageLevel, invisibilityLevel, jumpBoostLevel,
                         nightVisionLevel, regenerationLevel, resistanceLevel, saturationLevel, saturationRefillInterval,
-                        slowFallingLevel, strengthLevel, swiftnessLevel, waterBreathingLevel;
+                        slowFallingLevel, strengthLevel, swiftnessLevel, waterBreathingLevel,
+                        dragonRoarCooldownTicks, dragonRecallCooldownTicks, dragonRecallWeaknessDurationTicks,
+                        dragonRecallSlownessDurationTicks, dragonWardCooldownTicks, dragonWardDurationTicks,
+                        destroyedRelicShrineMinRadius, destroyedRelicShrineMaxRadius, relicShrineHintStep,
+                        relicShrineSearchAttempts;
+
+        public static double dragonRoarRadius, dragonRoarKnockback, dragonWardHealAmount;
 
         public static boolean relicTogglingEnabled, inventoryRelicPanelEnabled, absorptionUpgrade, dolphinsGraceUpgrade,
+                        relicShrinesEnabled, destroyedRelicsCreateShrines, relicShrineDiscoveryBroadcast,
+                        relicShrineClaimBroadcast, dragonRelicDropsFromDragons,
                         fireResistanceUpgrade, hasteUpgrade,
                         heroOfTheVillageUpgrade,
                         invisibilityUpgrade, invisibilityRequiresMainHand, invisibilityHidePlayerRender,
@@ -141,6 +169,30 @@ public class ModConfigs {
                 INVENTORY_RELIC_PANEL_ENABLED = BUILDER
                                 .comment("Show the relic toggle panel in the player inventory")
                                 .define("inventoryRelicPanelEnabled", true);
+                RELIC_SHRINES_ENABLED = BUILDER
+                                .comment("Allow relic shrines to exist and be placed by commands")
+                                .define("relicShrinesEnabled", true);
+                DESTROYED_RELICS_CREATE_SHRINES = BUILDER
+                                .comment("When a dropped relic is destroyed, respawn it as a shrine near world spawn")
+                                .define("destroyedRelicsCreateShrines", true);
+                DESTROYED_RELIC_SHRINE_MIN_RADIUS = BUILDER
+                                .comment("Minimum distance from world spawn for shrines created from destroyed relics")
+                                .defineInRange("destroyedRelicShrineMinRadius", 200, 0, 30000000);
+                DESTROYED_RELIC_SHRINE_MAX_RADIUS = BUILDER
+                                .comment("Maximum distance from world spawn for shrines created from destroyed relics")
+                                .defineInRange("destroyedRelicShrineMaxRadius", 1200, 0, 30000000);
+                RELIC_SHRINE_HINT_STEP = BUILDER
+                                .comment("Round shrine hint coordinates to this many blocks before broadcasting them")
+                                .defineInRange("relicShrineHintStep", 100, 1, 30000000);
+                RELIC_SHRINE_SEARCH_ATTEMPTS = BUILDER
+                                .comment("How many random positions the server tries when placing a shrine")
+                                .defineInRange("relicShrineSearchAttempts", 48, 1, 512);
+                RELIC_SHRINE_DISCOVERY_BROADCAST = BUILDER
+                                .comment("Broadcast when a player discovers a relic shrine")
+                                .define("relicShrineDiscoveryBroadcast", true);
+                RELIC_SHRINE_CLAIM_BROADCAST = BUILDER
+                                .comment("Broadcast when a player claims a relic shrine")
+                                .define("relicShrineClaimBroadcast", true);
                 BUILDER.pop();
 
                 // --- DOLPHIN'S GRACE ---
@@ -150,6 +202,40 @@ public class ModConfigs {
                 DOLPHINS_GRACE_UPGRADE = BUILDER.comment("Can upgrade in offhand").define("dolphinsGraceUpgrade", true);
                 DOLPHINS_GRACE_PARTICLES = BUILDER.comment("Show potion swirls?").define("dolphinsGraceParticles",
                                 false);
+                BUILDER.pop();
+
+                // --- DRAGON ---
+                BUILDER.push("Dragon Relic");
+                DRAGON_RELIC_DROPS_FROM_DRAGONS = BUILDER
+                                .comment("Ender Dragons drop a Dragon Relic when they die")
+                                .define("dragonRelicDropsFromDragons", true);
+                DRAGON_ROAR_COOLDOWN_TICKS = BUILDER
+                                .comment("Cooldown for Dragon Roar in ticks")
+                                .defineInRange("dragonRoarCooldownTicks", 1500, 0, 72000);
+                DRAGON_ROAR_RADIUS = BUILDER
+                                .comment("Radius of Dragon Roar in blocks")
+                                .defineInRange("dragonRoarRadius", 5.0d, 1.0d, 64.0d);
+                DRAGON_ROAR_KNOCKBACK = BUILDER
+                                .comment("Horizontal knockback strength of Dragon Roar")
+                                .defineInRange("dragonRoarKnockback", 1.7d, 0.0d, 16.0d);
+                DRAGON_RECALL_COOLDOWN_TICKS = BUILDER
+                                .comment("Cooldown for Void Recall in ticks")
+                                .defineInRange("dragonRecallCooldownTicks", 6000, 0, 72000);
+                DRAGON_RECALL_WEAKNESS_DURATION_TICKS = BUILDER
+                                .comment("Weakness duration applied after Void Recall in ticks")
+                                .defineInRange("dragonRecallWeaknessDurationTicks", 100, 0, 72000);
+                DRAGON_RECALL_SLOWNESS_DURATION_TICKS = BUILDER
+                                .comment("Slowness duration applied after Void Recall in ticks")
+                                .defineInRange("dragonRecallSlownessDurationTicks", 100, 0, 72000);
+                DRAGON_WARD_COOLDOWN_TICKS = BUILDER
+                                .comment("Cooldown for Dragon Ward in ticks")
+                                .defineInRange("dragonWardCooldownTicks", 8400, 0, 72000);
+                DRAGON_WARD_DURATION_TICKS = BUILDER
+                                .comment("How long Dragon Ward lasts in ticks")
+                                .defineInRange("dragonWardDurationTicks", 120, 1, 1200);
+                DRAGON_WARD_HEAL_AMOUNT = BUILDER
+                                .comment("Health restored when Dragon Ward triggers")
+                                .defineInRange("dragonWardHealAmount", 12.0d, 1.0d, 2048.0d);
                 BUILDER.pop();
 
                 // --- FIRE RESISTANCE ---
@@ -262,9 +348,9 @@ public class ModConfigs {
                 SWIFTNESS_PARTICLES = BUILDER.comment("Show potion swirls?").define("swiftnessParticles", false);
                 BUILDER.pop();
 
-                // --- WATER BREATHING ---
-                BUILDER.push("Water Breathing Relic");
-                WATER_BREATHING_LEVEL = BUILDER.comment("Amplifier level for Water Breathing" + levelExplanation)
+                // --- CONDUIT POWER ---
+                BUILDER.push("Conduit Power Relic");
+                WATER_BREATHING_LEVEL = BUILDER.comment("Amplifier level for Conduit Power" + levelExplanation)
                                 .defineInRange("waterBreathingLevel", 0, 0, 254);
                 WATER_BREATHING_UPGRADE = BUILDER.comment("Can upgrade in offhand").define("waterBreathingUpgrade",
                                 false);
@@ -289,11 +375,32 @@ public class ModConfigs {
                 // Interactions
                 relicTogglingEnabled = RELIC_TOGGLING_ENABLED.get();
                 inventoryRelicPanelEnabled = INVENTORY_RELIC_PANEL_ENABLED.get();
+                relicShrinesEnabled = RELIC_SHRINES_ENABLED.get();
+                destroyedRelicsCreateShrines = DESTROYED_RELICS_CREATE_SHRINES.get();
+                destroyedRelicShrineMinRadius = Math.max(0, DESTROYED_RELIC_SHRINE_MIN_RADIUS.get());
+                destroyedRelicShrineMaxRadius = Math.max(destroyedRelicShrineMinRadius,
+                                DESTROYED_RELIC_SHRINE_MAX_RADIUS.get());
+                relicShrineHintStep = Math.max(1, RELIC_SHRINE_HINT_STEP.get());
+                relicShrineSearchAttempts = Math.max(1, RELIC_SHRINE_SEARCH_ATTEMPTS.get());
+                relicShrineDiscoveryBroadcast = RELIC_SHRINE_DISCOVERY_BROADCAST.get();
+                relicShrineClaimBroadcast = RELIC_SHRINE_CLAIM_BROADCAST.get();
 
                 // Dolphin's Grace
                 dolphinsGraceLevel = Math.max(0, DOLPHINS_GRACE_LEVEL.get());
                 dolphinsGraceUpgrade = DOLPHINS_GRACE_UPGRADE.get();
                 dolphinsGraceParticles = DOLPHINS_GRACE_PARTICLES.get();
+
+                // Dragon Relic
+                dragonRelicDropsFromDragons = DRAGON_RELIC_DROPS_FROM_DRAGONS.get();
+                dragonRoarCooldownTicks = Math.max(0, DRAGON_ROAR_COOLDOWN_TICKS.get());
+                dragonRoarRadius = Math.max(1.0d, DRAGON_ROAR_RADIUS.get());
+                dragonRoarKnockback = Math.max(0.0d, DRAGON_ROAR_KNOCKBACK.get());
+                dragonRecallCooldownTicks = Math.max(0, DRAGON_RECALL_COOLDOWN_TICKS.get());
+                dragonRecallWeaknessDurationTicks = Math.max(0, DRAGON_RECALL_WEAKNESS_DURATION_TICKS.get());
+                dragonRecallSlownessDurationTicks = Math.max(0, DRAGON_RECALL_SLOWNESS_DURATION_TICKS.get());
+                dragonWardCooldownTicks = Math.max(0, DRAGON_WARD_COOLDOWN_TICKS.get());
+                dragonWardDurationTicks = Math.max(120, DRAGON_WARD_DURATION_TICKS.get());
+                dragonWardHealAmount = Math.max(1.0d, DRAGON_WARD_HEAL_AMOUNT.get());
 
                 // Fire Resistance
                 fireResistanceLevel = Math.max(0, FIRE_RESISTANCE_LEVEL.get());
@@ -358,7 +465,7 @@ public class ModConfigs {
                 swiftnessUpgrade = SWIFTNESS_UPGRADE.get();
                 swiftnessParticles = SWIFTNESS_PARTICLES.get();
 
-                // Water Breathing
+                // Conduit Power
                 waterBreathingLevel = Math.max(0, WATER_BREATHING_LEVEL.get());
                 waterBreathingUpgrade = WATER_BREATHING_UPGRADE.get();
                 waterBreathingParticles = WATER_BREATHING_PARTICLES.get();

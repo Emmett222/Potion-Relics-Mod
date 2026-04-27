@@ -1,0 +1,9 @@
+{
+  "parent": "potionrelicsmod:block/relic_shrine_template",
+  "textures": {
+    "base": "minecraft:block/quartz_bricks",
+    "trim": "minecraft:block/quartz_block_side",
+    "top": "minecraft:block/white_stained_glass",
+    "core": "minecraft:block/sea_lantern"
+  }
+}

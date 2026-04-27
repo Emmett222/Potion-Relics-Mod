@@ -4,7 +4,7 @@ import net.emmett222.potionrelicsmod.configs.ModConfigs;
 import net.minecraft.world.effect.MobEffects;
 
 /**
- * Water Breathing Relic. Gives the player constant Water Breathing if in the
+ * Conduit Power relic. Gives the player constant Conduit Power if in the
  * inventory.
  * 
  * @author Emmett Grebe
@@ -14,21 +14,21 @@ public class WaterBreathingRelic extends BaseRelic {
 
     /**
      * Explicit constructor.
-     * Sets the effect to Water Breathing 1 and does not allow offhand upgrading.
+     * Sets the effect to Conduit Power 1 and does not allow offhand upgrading.
      * 
      * @param pProperties The pProperties to be used.
      */
     public WaterBreathingRelic(Properties pProperties) {
         super(pProperties,
-                MobEffects.WATER_BREATHING,
+                MobEffects.CONDUIT_POWER,
                 40,
                 "tooltip.potionrelicsmod.waterbreathingrelic");
     }
 
     /**
-     * Returns the Water Breathing level from the configs.
+     * Returns the Conduit Power level from the configs.
      * 
-     * @return The Water Breathing level denoted in config.
+     * @return The Conduit Power level denoted in config.
      */
     @Override
     protected int getConfigAmplifier() {
@@ -36,7 +36,7 @@ public class WaterBreathingRelic extends BaseRelic {
     }
 
     /**
-     * Returns if the Water Breathing Relic can upgrade in offhand from the configs.
+     * Returns if the Conduit Power relic can upgrade in offhand from the configs.
      * 
      * @return True if it can upgrade, false otherwise.
      */
@@ -46,7 +46,7 @@ public class WaterBreathingRelic extends BaseRelic {
     }
 
     /**
-     * Returns if the Water Breathing Relic shows particles around the player.
+     * Returns if the Conduit Power relic shows particles around the player.
      * 
      * @return True if it shows particles, false otherwise.
      */
