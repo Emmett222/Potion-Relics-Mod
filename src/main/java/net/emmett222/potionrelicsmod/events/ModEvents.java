@@ -60,6 +60,7 @@ public class ModEvents {
         if (player instanceof ServerPlayer serverPlayer) {
             DragonRelic.tickPlayer(serverPlayer);
         }
+        InvisibilityRelic.tickPlayer(player);
 
         boolean hasRelic = hasAbsorptionRelic(player);
         float vanillaAbsorption = getVanillaAbsorptionAmount(player);
@@ -90,6 +91,11 @@ public class ModEvents {
     public static void onLivingDamage(LivingDamageEvent event) {
         if (!(event.getEntity() instanceof Player player)) {
             return;
+        }
+
+        if (event.getAmount() > 0.0f && event.getSource().getEntity() instanceof Player attackingPlayer
+                && attackingPlayer != player) {
+            InvisibilityRelic.markHitByPlayer(player);
         }
 
         if (DragonRelic.isWardActive(player)) {
@@ -180,6 +186,10 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onAttackEntity(AttackEntityEvent event) {
+        if (InvisibilityRelic.tryShadowStrike(event.getEntity(), event.getTarget())) {
+            return;
+        }
+
         if (DragonRelic.isWardActive(event.getEntity())) {
             event.setCanceled(true);
         }
@@ -187,6 +197,8 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
+        InvisibilityRelic.revealFromAction(event.getEntity());
+
         if (DragonRelic.isWardActive(event.getEntity())) {
             event.setCanceled(true);
             event.setCancellationResult(InteractionResult.FAIL);
@@ -195,6 +207,8 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
+        InvisibilityRelic.revealFromAction(event.getEntity());
+
         if (DragonRelic.isWardActive(event.getEntity())) {
             event.setCanceled(true);
             event.setCancellationResult(InteractionResult.FAIL);
@@ -203,6 +217,8 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
+        InvisibilityRelic.revealFromAction(event.getEntity());
+
         if (DragonRelic.isWardActive(event.getEntity())) {
             event.setCanceled(true);
             event.setCancellationResult(InteractionResult.FAIL);
@@ -211,6 +227,8 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
+        InvisibilityRelic.revealFromAction(event.getEntity());
+
         if (DragonRelic.isWardActive(event.getEntity())) {
             event.setCanceled(true);
             event.setCancellationResult(InteractionResult.FAIL);
@@ -219,6 +237,8 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onEntityInteractSpecific(PlayerInteractEvent.EntityInteractSpecific event) {
+        InvisibilityRelic.revealFromAction(event.getEntity());
+
         if (DragonRelic.isWardActive(event.getEntity())) {
             event.setCanceled(true);
             event.setCancellationResult(InteractionResult.FAIL);
@@ -227,6 +247,10 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onEntityPlace(BlockEvent.EntityPlaceEvent event) {
+        if (event.getEntity() instanceof Player player) {
+            InvisibilityRelic.revealFromAction(player);
+        }
+
         if (event.getEntity() instanceof Player player && DragonRelic.isWardActive(player)) {
             event.setCanceled(true);
         }

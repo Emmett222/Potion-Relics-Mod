@@ -16,6 +16,7 @@ import net.minecraft.world.level.Level;
  */
 public class SaturationRelic extends BaseRelic {
     private static final int DEFAULT_FOOD_REFILL_INTERVAL = 40;
+    private static final int TARGET_FOOD_LEVEL = 18;
 
     /**
      * Explicit constructor.
@@ -33,7 +34,9 @@ public class SaturationRelic extends BaseRelic {
     /**
      * Called each tick as long as the relic is in the inventory.
      * Restores hunger directly instead of applying vanilla Saturation so the relic
-     * no longer creates saturated-regeneration abuse.
+     * no longer creates saturated-regeneration abuse. The relic intentionally stops
+     * one hunger shank short of full so players can still eat while keeping natural
+     * regeneration online.
      * 
      * @param pStack      The ItemStack to be used.
      * @param pLevel      The level.
@@ -49,7 +52,7 @@ public class SaturationRelic extends BaseRelic {
 
         if (pEntity instanceof Player player) {
             int foodLevel = player.getFoodData().getFoodLevel();
-            if (foodLevel >= 20 || player.getCooldowns().isOnCooldown(this)) {
+            if (foodLevel >= TARGET_FOOD_LEVEL || player.getCooldowns().isOnCooldown(this)) {
                 return;
             }
 
@@ -58,7 +61,7 @@ public class SaturationRelic extends BaseRelic {
                 foodRestore++;
             }
 
-            player.getFoodData().setFoodLevel(Math.min(20, foodLevel + foodRestore));
+            player.getFoodData().setFoodLevel(Math.min(TARGET_FOOD_LEVEL, foodLevel + foodRestore));
             player.getCooldowns().addCooldown(this, ModConfigs.saturationRefillInterval);
         }
     }

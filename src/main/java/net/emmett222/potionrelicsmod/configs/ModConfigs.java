@@ -63,10 +63,11 @@ public class ModConfigs {
 
         // Invisibility
         public static final ForgeConfigSpec.ConfigValue<Integer> INVISIBILITY_LEVEL;
-        public static final ForgeConfigSpec.ConfigValue<Boolean> INVISIBILITY_UPGRADE;
-        public static final ForgeConfigSpec.ConfigValue<Boolean> INVISIBILITY_PARTICLES;
-        public static final ForgeConfigSpec.ConfigValue<Boolean> INVISIBILITY_REQUIRES_MAIN_HAND;
-        public static final ForgeConfigSpec.ConfigValue<Boolean> INVISIBILITY_HIDE_PLAYER_RENDER;
+        public static final ForgeConfigSpec.ConfigValue<Integer> INVISIBILITY_REVEAL_TICKS;
+        public static final ForgeConfigSpec.ConfigValue<Integer> INVISIBILITY_SHADOW_STEP_TICKS;
+        public static final ForgeConfigSpec.ConfigValue<Integer> INVISIBILITY_SHADOW_STEP_LEVEL;
+        public static final ForgeConfigSpec.ConfigValue<Integer> INVISIBILITY_STRIKE_DEBUFF_TICKS;
+        public static final ForgeConfigSpec.ConfigValue<Integer> INVISIBILITY_PVP_LOCKOUT_TICKS;
 
         // Invisibility
         public static final ForgeConfigSpec.ConfigValue<Integer> JUMP_BOOST_LEVEL;
@@ -119,7 +120,9 @@ public class ModConfigs {
         public static float absorptionAmount;
 
         public static int absorptionCooldown, dolphinsGraceLevel, fireResistanceLevel, hasteLevel,
-                        heroOfTheVillageLevel, invisibilityLevel, jumpBoostLevel,
+                        heroOfTheVillageLevel, invisibilityLevel,
+                        invisibilityRevealTicks, invisibilityShadowStepTicks, invisibilityShadowStepLevel,
+                        invisibilityStrikeDebuffTicks, invisibilityPvpLockoutTicks, jumpBoostLevel,
                         nightVisionLevel, regenerationLevel, resistanceLevel, saturationLevel, saturationRefillInterval,
                         slowFallingLevel, strengthLevel, swiftnessLevel, waterBreathingLevel,
                         dragonRoarCooldownTicks, dragonRecallCooldownTicks, dragonRecallWeaknessDurationTicks,
@@ -134,14 +137,13 @@ public class ModConfigs {
                         relicShrineClaimBroadcast, dragonRelicDropsFromDragons,
                         fireResistanceUpgrade, hasteUpgrade,
                         heroOfTheVillageUpgrade,
-                        invisibilityUpgrade, invisibilityRequiresMainHand, invisibilityHidePlayerRender,
                         jumpBoostUpgrade, nightVisionUpgrade, regenerationUpgrade, resistanceUpgrade,
                         saturationUpgrade, slowFallingUpgrade,
                         strengthUpgrade, swiftnessUpgrade, waterBreathingUpgrade;
 
         public static boolean absorptionParticles, dolphinsGraceParticles, fireResistanceParticles, hasteParticles,
                         heroOfTheVillageParticles,
-                        invisibilityParticles, jumpBoostParticles, nightVisionParticles, regenerationParticles, resistanceParticles,
+                        jumpBoostParticles, nightVisionParticles, regenerationParticles, resistanceParticles,
                         saturationParticles, slowFallingParticles, strengthParticles, swiftnessParticles, waterBreathingParticles;
 
         // Strings
@@ -269,16 +271,21 @@ public class ModConfigs {
                 BUILDER.push("Invisibility Relic");
                 INVISIBILITY_LEVEL = BUILDER.comment("Amplifier level for Invisibility" + levelExplanation)
                                 .defineInRange("invisibilityLevel", 0, 0, 254);
-                INVISIBILITY_UPGRADE = BUILDER.comment("Can upgrade in offhand").define("invisibilityUpgrade", false);
-                INVISIBILITY_PARTICLES = BUILDER.comment("Invisibility Relic shows particles").define(
-                                "invisibilityParticles",
-                                true);
-                INVISIBILITY_REQUIRES_MAIN_HAND = BUILDER
-                                .comment("Invisibility relic only works while held in the main hand")
-                                .define("invisibilityRequiresMainHand", true);
-                INVISIBILITY_HIDE_PLAYER_RENDER = BUILDER
-                                .comment("Hide the held relic, arm, and player model while invisibility is active")
-                                .define("invisibilityHidePlayerRender", true);
+                INVISIBILITY_REVEAL_TICKS = BUILDER
+                                .comment("Ticks the player stays revealed after breaking cloak")
+                                .defineInRange("invisibilityRevealTicks", 80, 0, 72000);
+                INVISIBILITY_SHADOW_STEP_TICKS = BUILDER
+                                .comment("Ticks of Speed granted after breaking cloak")
+                                .defineInRange("invisibilityShadowStepTicks", 60, 0, 72000);
+                INVISIBILITY_SHADOW_STEP_LEVEL = BUILDER
+                                .comment("Amplifier level for Shadow Step speed" + levelExplanation)
+                                .defineInRange("invisibilityShadowStepLevel", 1, 0, 254);
+                INVISIBILITY_STRIKE_DEBUFF_TICKS = BUILDER
+                                .comment("Ticks of Weakness and Slowness applied by a cloaked first hit")
+                                .defineInRange("invisibilityStrikeDebuffTicks", 80, 0, 72000);
+                INVISIBILITY_PVP_LOCKOUT_TICKS = BUILDER
+                                .comment("Ticks after player damage before the invisibility relic can cloak again")
+                                .defineInRange("invisibilityPvpLockoutTicks", 600, 0, 72000);
                 BUILDER.pop();
 
                 // --- JUMP BOOST ---
@@ -419,10 +426,11 @@ public class ModConfigs {
 
                 // Invisibility
                 invisibilityLevel = Math.max(0, INVISIBILITY_LEVEL.get());
-                invisibilityUpgrade = INVISIBILITY_UPGRADE.get();
-                invisibilityParticles = INVISIBILITY_PARTICLES.get();
-                invisibilityRequiresMainHand = INVISIBILITY_REQUIRES_MAIN_HAND.get();
-                invisibilityHidePlayerRender = INVISIBILITY_HIDE_PLAYER_RENDER.get();
+                invisibilityRevealTicks = Math.max(0, INVISIBILITY_REVEAL_TICKS.get());
+                invisibilityShadowStepTicks = Math.max(0, INVISIBILITY_SHADOW_STEP_TICKS.get());
+                invisibilityShadowStepLevel = Math.max(0, INVISIBILITY_SHADOW_STEP_LEVEL.get());
+                invisibilityStrikeDebuffTicks = Math.max(0, INVISIBILITY_STRIKE_DEBUFF_TICKS.get());
+                invisibilityPvpLockoutTicks = Math.max(0, INVISIBILITY_PVP_LOCKOUT_TICKS.get());
 
                 // Jump Boost
                 jumpBoostLevel = Math.max(0, JUMP_BOOST_LEVEL.get());
