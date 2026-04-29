@@ -1,0 +1,9 @@
+{
+  "parent": "potionrelicsmod:block/relic_shrine_template",
+  "textures": {
+    "base": "minecraft:block/moss_block",
+    "trim": "minecraft:block/honeycomb_block",
+    "top": "minecraft:block/lime_concrete",
+    "core": "minecraft:block/pearlescent_froglight_side"
+  }
+}

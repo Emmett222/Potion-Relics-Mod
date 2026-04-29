@@ -17,10 +17,34 @@ public class ModConfigs {
         public static final ForgeConfigSpec.ConfigValue<Integer> ABSORPTION_RELIC_COOLDOWN;
         public static final ForgeConfigSpec.ConfigValue<Long> ABSORPTION_AMOUNT;
 
+        // Interactions
+        public static final ForgeConfigSpec.ConfigValue<Boolean> RELIC_TOGGLING_ENABLED;
+        public static final ForgeConfigSpec.ConfigValue<Boolean> INVENTORY_RELIC_PANEL_ENABLED;
+        public static final ForgeConfigSpec.ConfigValue<Boolean> RELIC_SHRINES_ENABLED;
+        public static final ForgeConfigSpec.ConfigValue<Boolean> DESTROYED_RELICS_CREATE_SHRINES;
+        public static final ForgeConfigSpec.ConfigValue<Integer> DESTROYED_RELIC_SHRINE_MIN_RADIUS;
+        public static final ForgeConfigSpec.ConfigValue<Integer> DESTROYED_RELIC_SHRINE_MAX_RADIUS;
+        public static final ForgeConfigSpec.ConfigValue<Integer> RELIC_SHRINE_HINT_STEP;
+        public static final ForgeConfigSpec.ConfigValue<Integer> RELIC_SHRINE_SEARCH_ATTEMPTS;
+        public static final ForgeConfigSpec.ConfigValue<Boolean> RELIC_SHRINE_DISCOVERY_BROADCAST;
+        public static final ForgeConfigSpec.ConfigValue<Boolean> RELIC_SHRINE_CLAIM_BROADCAST;
+
         // Dolphin's Grace
         public static final ForgeConfigSpec.ConfigValue<Integer> DOLPHINS_GRACE_LEVEL;
         public static final ForgeConfigSpec.ConfigValue<Boolean> DOLPHINS_GRACE_UPGRADE;
         public static final ForgeConfigSpec.ConfigValue<Boolean> DOLPHINS_GRACE_PARTICLES;
+
+        // Dragon
+        public static final ForgeConfigSpec.ConfigValue<Boolean> DRAGON_RELIC_DROPS_FROM_DRAGONS;
+        public static final ForgeConfigSpec.ConfigValue<Integer> DRAGON_ROAR_COOLDOWN_TICKS;
+        public static final ForgeConfigSpec.DoubleValue DRAGON_ROAR_RADIUS;
+        public static final ForgeConfigSpec.DoubleValue DRAGON_ROAR_KNOCKBACK;
+        public static final ForgeConfigSpec.ConfigValue<Integer> DRAGON_RECALL_COOLDOWN_TICKS;
+        public static final ForgeConfigSpec.ConfigValue<Integer> DRAGON_RECALL_WEAKNESS_DURATION_TICKS;
+        public static final ForgeConfigSpec.ConfigValue<Integer> DRAGON_RECALL_SLOWNESS_DURATION_TICKS;
+        public static final ForgeConfigSpec.ConfigValue<Integer> DRAGON_WARD_COOLDOWN_TICKS;
+        public static final ForgeConfigSpec.ConfigValue<Integer> DRAGON_WARD_DURATION_TICKS;
+        public static final ForgeConfigSpec.DoubleValue DRAGON_WARD_HEAL_AMOUNT;
 
         // Fire Resistance
         public static final ForgeConfigSpec.ConfigValue<Integer> FIRE_RESISTANCE_LEVEL;
@@ -39,8 +63,11 @@ public class ModConfigs {
 
         // Invisibility
         public static final ForgeConfigSpec.ConfigValue<Integer> INVISIBILITY_LEVEL;
-        public static final ForgeConfigSpec.ConfigValue<Boolean> INVISIBILITY_UPGRADE;
-        public static final ForgeConfigSpec.ConfigValue<Boolean> INVISIBILITY_PARTICLES;
+        public static final ForgeConfigSpec.ConfigValue<Integer> INVISIBILITY_REVEAL_TICKS;
+        public static final ForgeConfigSpec.ConfigValue<Integer> INVISIBILITY_SHADOW_STEP_TICKS;
+        public static final ForgeConfigSpec.ConfigValue<Integer> INVISIBILITY_SHADOW_STEP_LEVEL;
+        public static final ForgeConfigSpec.ConfigValue<Integer> INVISIBILITY_STRIKE_DEBUFF_TICKS;
+        public static final ForgeConfigSpec.ConfigValue<Integer> INVISIBILITY_PVP_LOCKOUT_TICKS;
 
         // Invisibility
         public static final ForgeConfigSpec.ConfigValue<Integer> JUMP_BOOST_LEVEL;
@@ -66,6 +93,7 @@ public class ModConfigs {
         public static final ForgeConfigSpec.ConfigValue<Integer> SATURATION_LEVEL;
         public static final ForgeConfigSpec.ConfigValue<Boolean> SATURATION_UPGRADE;
         public static final ForgeConfigSpec.ConfigValue<Boolean> SATURATION_PARTICLES;
+        public static final ForgeConfigSpec.ConfigValue<Integer> SATURATION_REFILL_INTERVAL;
 
         // Slow Falling
         public static final ForgeConfigSpec.ConfigValue<Integer> SLOW_FALLING_LEVEL;
@@ -82,7 +110,7 @@ public class ModConfigs {
         public static final ForgeConfigSpec.ConfigValue<Boolean> SWIFTNESS_UPGRADE;
         public static final ForgeConfigSpec.ConfigValue<Boolean> SWIFTNESS_PARTICLES;
 
-        // Water Breathing
+        // Conduit Power
         public static final ForgeConfigSpec.ConfigValue<Integer> WATER_BREATHING_LEVEL;
         public static final ForgeConfigSpec.ConfigValue<Boolean> WATER_BREATHING_UPGRADE;
         public static final ForgeConfigSpec.ConfigValue<Boolean> WATER_BREATHING_PARTICLES;
@@ -92,19 +120,30 @@ public class ModConfigs {
         public static float absorptionAmount;
 
         public static int absorptionCooldown, dolphinsGraceLevel, fireResistanceLevel, hasteLevel,
-                        heroOfTheVillageLevel, invisibilityLevel, jumpBoostLevel,
-                        nightVisionLevel, regenerationLevel, resistanceLevel, saturationLevel, slowFallingLevel, strengthLevel,
-                        swiftnessLevel, waterBreathingLevel;
+                        heroOfTheVillageLevel, invisibilityLevel,
+                        invisibilityRevealTicks, invisibilityShadowStepTicks, invisibilityShadowStepLevel,
+                        invisibilityStrikeDebuffTicks, invisibilityPvpLockoutTicks, jumpBoostLevel,
+                        nightVisionLevel, regenerationLevel, resistanceLevel, saturationLevel, saturationRefillInterval,
+                        slowFallingLevel, strengthLevel, swiftnessLevel, waterBreathingLevel,
+                        dragonRoarCooldownTicks, dragonRecallCooldownTicks, dragonRecallWeaknessDurationTicks,
+                        dragonRecallSlownessDurationTicks, dragonWardCooldownTicks, dragonWardDurationTicks,
+                        destroyedRelicShrineMinRadius, destroyedRelicShrineMaxRadius, relicShrineHintStep,
+                        relicShrineSearchAttempts;
 
-        public static boolean absorptionUpgrade, dolphinsGraceUpgrade, fireResistanceUpgrade, hasteUpgrade,
+        public static double dragonRoarRadius, dragonRoarKnockback, dragonWardHealAmount;
+
+        public static boolean relicTogglingEnabled, inventoryRelicPanelEnabled, absorptionUpgrade, dolphinsGraceUpgrade,
+                        relicShrinesEnabled, destroyedRelicsCreateShrines, relicShrineDiscoveryBroadcast,
+                        relicShrineClaimBroadcast, dragonRelicDropsFromDragons,
+                        fireResistanceUpgrade, hasteUpgrade,
                         heroOfTheVillageUpgrade,
-                        invisibilityUpgrade, jumpBoostUpgrade, nightVisionUpgrade, regenerationUpgrade, resistanceUpgrade,
+                        jumpBoostUpgrade, nightVisionUpgrade, regenerationUpgrade, resistanceUpgrade,
                         saturationUpgrade, slowFallingUpgrade,
                         strengthUpgrade, swiftnessUpgrade, waterBreathingUpgrade;
 
         public static boolean absorptionParticles, dolphinsGraceParticles, fireResistanceParticles, hasteParticles,
                         heroOfTheVillageParticles,
-                        invisibilityParticles, jumpBoostParticles, nightVisionParticles, regenerationParticles, resistanceParticles,
+                        jumpBoostParticles, nightVisionParticles, regenerationParticles, resistanceParticles,
                         saturationParticles, slowFallingParticles, strengthParticles, swiftnessParticles, waterBreathingParticles;
 
         // Strings
@@ -124,6 +163,40 @@ public class ModConfigs {
                                 .defineInRange("absorptionAmount", 16L, 0L, 2048L);
                 BUILDER.pop();
 
+                // --- INTERACTIONS ---
+                BUILDER.push("Relic Interactions");
+                RELIC_TOGGLING_ENABLED = BUILDER
+                                .comment("Allow players to enable or disable relics")
+                                .define("relicTogglingEnabled", true);
+                INVENTORY_RELIC_PANEL_ENABLED = BUILDER
+                                .comment("Show the relic toggle panel in the player inventory")
+                                .define("inventoryRelicPanelEnabled", true);
+                RELIC_SHRINES_ENABLED = BUILDER
+                                .comment("Allow relic shrines to exist and be placed by commands")
+                                .define("relicShrinesEnabled", true);
+                DESTROYED_RELICS_CREATE_SHRINES = BUILDER
+                                .comment("When a dropped relic is destroyed, respawn it as a shrine near world spawn")
+                                .define("destroyedRelicsCreateShrines", true);
+                DESTROYED_RELIC_SHRINE_MIN_RADIUS = BUILDER
+                                .comment("Minimum distance from world spawn for shrines created from destroyed relics")
+                                .defineInRange("destroyedRelicShrineMinRadius", 200, 0, 30000000);
+                DESTROYED_RELIC_SHRINE_MAX_RADIUS = BUILDER
+                                .comment("Maximum distance from world spawn for shrines created from destroyed relics")
+                                .defineInRange("destroyedRelicShrineMaxRadius", 1200, 0, 30000000);
+                RELIC_SHRINE_HINT_STEP = BUILDER
+                                .comment("Round shrine hint coordinates to this many blocks before broadcasting them")
+                                .defineInRange("relicShrineHintStep", 100, 1, 30000000);
+                RELIC_SHRINE_SEARCH_ATTEMPTS = BUILDER
+                                .comment("How many random positions the server tries when placing a shrine")
+                                .defineInRange("relicShrineSearchAttempts", 48, 1, 512);
+                RELIC_SHRINE_DISCOVERY_BROADCAST = BUILDER
+                                .comment("Broadcast when a player discovers a relic shrine")
+                                .define("relicShrineDiscoveryBroadcast", true);
+                RELIC_SHRINE_CLAIM_BROADCAST = BUILDER
+                                .comment("Broadcast when a player claims a relic shrine")
+                                .define("relicShrineClaimBroadcast", true);
+                BUILDER.pop();
+
                 // --- DOLPHIN'S GRACE ---
                 BUILDER.push("Dolphin's Grace Relic");
                 DOLPHINS_GRACE_LEVEL = BUILDER.comment("Amplifier level for Dolphin's Grace" + levelExplanation)
@@ -131,6 +204,40 @@ public class ModConfigs {
                 DOLPHINS_GRACE_UPGRADE = BUILDER.comment("Can upgrade in offhand").define("dolphinsGraceUpgrade", true);
                 DOLPHINS_GRACE_PARTICLES = BUILDER.comment("Show potion swirls?").define("dolphinsGraceParticles",
                                 false);
+                BUILDER.pop();
+
+                // --- DRAGON ---
+                BUILDER.push("Dragon Relic");
+                DRAGON_RELIC_DROPS_FROM_DRAGONS = BUILDER
+                                .comment("Ender Dragons drop a Dragon Relic when they die")
+                                .define("dragonRelicDropsFromDragons", true);
+                DRAGON_ROAR_COOLDOWN_TICKS = BUILDER
+                                .comment("Cooldown for Dragon Roar in ticks")
+                                .defineInRange("dragonRoarCooldownTicks", 1500, 0, 72000);
+                DRAGON_ROAR_RADIUS = BUILDER
+                                .comment("Radius of Dragon Roar in blocks")
+                                .defineInRange("dragonRoarRadius", 5.0d, 1.0d, 64.0d);
+                DRAGON_ROAR_KNOCKBACK = BUILDER
+                                .comment("Horizontal knockback strength of Dragon Roar")
+                                .defineInRange("dragonRoarKnockback", 1.7d, 0.0d, 16.0d);
+                DRAGON_RECALL_COOLDOWN_TICKS = BUILDER
+                                .comment("Cooldown for Void Recall in ticks")
+                                .defineInRange("dragonRecallCooldownTicks", 6000, 0, 72000);
+                DRAGON_RECALL_WEAKNESS_DURATION_TICKS = BUILDER
+                                .comment("Weakness duration applied after Void Recall in ticks")
+                                .defineInRange("dragonRecallWeaknessDurationTicks", 100, 0, 72000);
+                DRAGON_RECALL_SLOWNESS_DURATION_TICKS = BUILDER
+                                .comment("Slowness duration applied after Void Recall in ticks")
+                                .defineInRange("dragonRecallSlownessDurationTicks", 100, 0, 72000);
+                DRAGON_WARD_COOLDOWN_TICKS = BUILDER
+                                .comment("Cooldown for Dragon Ward in ticks")
+                                .defineInRange("dragonWardCooldownTicks", 8400, 0, 72000);
+                DRAGON_WARD_DURATION_TICKS = BUILDER
+                                .comment("How long Dragon Ward lasts in ticks")
+                                .defineInRange("dragonWardDurationTicks", 120, 1, 1200);
+                DRAGON_WARD_HEAL_AMOUNT = BUILDER
+                                .comment("Health restored when Dragon Ward triggers")
+                                .defineInRange("dragonWardHealAmount", 12.0d, 1.0d, 2048.0d);
                 BUILDER.pop();
 
                 // --- FIRE RESISTANCE ---
@@ -164,10 +271,21 @@ public class ModConfigs {
                 BUILDER.push("Invisibility Relic");
                 INVISIBILITY_LEVEL = BUILDER.comment("Amplifier level for Invisibility" + levelExplanation)
                                 .defineInRange("invisibilityLevel", 0, 0, 254);
-                INVISIBILITY_UPGRADE = BUILDER.comment("Can upgrade in offhand").define("invisibilityUpgrade", false);
-                INVISIBILITY_PARTICLES = BUILDER.comment("Invisibility Relic shows particles").define(
-                                "invisibilityParticles",
-                                true);
+                INVISIBILITY_REVEAL_TICKS = BUILDER
+                                .comment("Ticks the player stays revealed after breaking cloak")
+                                .defineInRange("invisibilityRevealTicks", 80, 0, 72000);
+                INVISIBILITY_SHADOW_STEP_TICKS = BUILDER
+                                .comment("Ticks of Speed granted after breaking cloak")
+                                .defineInRange("invisibilityShadowStepTicks", 60, 0, 72000);
+                INVISIBILITY_SHADOW_STEP_LEVEL = BUILDER
+                                .comment("Amplifier level for Shadow Step speed" + levelExplanation)
+                                .defineInRange("invisibilityShadowStepLevel", 1, 0, 254);
+                INVISIBILITY_STRIKE_DEBUFF_TICKS = BUILDER
+                                .comment("Ticks of Weakness and Slowness applied by a cloaked first hit")
+                                .defineInRange("invisibilityStrikeDebuffTicks", 80, 0, 72000);
+                INVISIBILITY_PVP_LOCKOUT_TICKS = BUILDER
+                                .comment("Ticks after player damage before the invisibility relic can cloak again")
+                                .defineInRange("invisibilityPvpLockoutTicks", 600, 0, 72000);
                 BUILDER.pop();
 
                 // --- JUMP BOOST ---
@@ -208,6 +326,9 @@ public class ModConfigs {
                                 .defineInRange("saturationLevel", 0, 0, 254);
                 SATURATION_UPGRADE = BUILDER.comment("Can upgrade in offhand").define("saturationUpgrade", true);
                 SATURATION_PARTICLES = BUILDER.comment("Show potion swirls?").define("saturationParticles", false);
+                SATURATION_REFILL_INTERVAL = BUILDER
+                                .comment("Ticks between hunger refills from the saturation relic")
+                                .defineInRange("saturationRefillInterval", 40, 1, 72000);
                 BUILDER.pop();
 
                 // --- SLOW FALLING ---
@@ -234,9 +355,9 @@ public class ModConfigs {
                 SWIFTNESS_PARTICLES = BUILDER.comment("Show potion swirls?").define("swiftnessParticles", false);
                 BUILDER.pop();
 
-                // --- WATER BREATHING ---
-                BUILDER.push("Water Breathing Relic");
-                WATER_BREATHING_LEVEL = BUILDER.comment("Amplifier level for Water Breathing" + levelExplanation)
+                // --- CONDUIT POWER ---
+                BUILDER.push("Conduit Power Relic");
+                WATER_BREATHING_LEVEL = BUILDER.comment("Amplifier level for Conduit Power" + levelExplanation)
                                 .defineInRange("waterBreathingLevel", 0, 0, 254);
                 WATER_BREATHING_UPGRADE = BUILDER.comment("Can upgrade in offhand").define("waterBreathingUpgrade",
                                 false);
@@ -258,10 +379,35 @@ public class ModConfigs {
                 absorptionAmount = Math.max(0, ABSORPTION_AMOUNT.get());
                 absorptionCooldown = Math.max(0, ABSORPTION_RELIC_COOLDOWN.get());
 
+                // Interactions
+                relicTogglingEnabled = RELIC_TOGGLING_ENABLED.get();
+                inventoryRelicPanelEnabled = INVENTORY_RELIC_PANEL_ENABLED.get();
+                relicShrinesEnabled = RELIC_SHRINES_ENABLED.get();
+                destroyedRelicsCreateShrines = DESTROYED_RELICS_CREATE_SHRINES.get();
+                destroyedRelicShrineMinRadius = Math.max(0, DESTROYED_RELIC_SHRINE_MIN_RADIUS.get());
+                destroyedRelicShrineMaxRadius = Math.max(destroyedRelicShrineMinRadius,
+                                DESTROYED_RELIC_SHRINE_MAX_RADIUS.get());
+                relicShrineHintStep = Math.max(1, RELIC_SHRINE_HINT_STEP.get());
+                relicShrineSearchAttempts = Math.max(1, RELIC_SHRINE_SEARCH_ATTEMPTS.get());
+                relicShrineDiscoveryBroadcast = RELIC_SHRINE_DISCOVERY_BROADCAST.get();
+                relicShrineClaimBroadcast = RELIC_SHRINE_CLAIM_BROADCAST.get();
+
                 // Dolphin's Grace
                 dolphinsGraceLevel = Math.max(0, DOLPHINS_GRACE_LEVEL.get());
                 dolphinsGraceUpgrade = DOLPHINS_GRACE_UPGRADE.get();
                 dolphinsGraceParticles = DOLPHINS_GRACE_PARTICLES.get();
+
+                // Dragon Relic
+                dragonRelicDropsFromDragons = DRAGON_RELIC_DROPS_FROM_DRAGONS.get();
+                dragonRoarCooldownTicks = Math.max(0, DRAGON_ROAR_COOLDOWN_TICKS.get());
+                dragonRoarRadius = Math.max(1.0d, DRAGON_ROAR_RADIUS.get());
+                dragonRoarKnockback = Math.max(0.0d, DRAGON_ROAR_KNOCKBACK.get());
+                dragonRecallCooldownTicks = Math.max(0, DRAGON_RECALL_COOLDOWN_TICKS.get());
+                dragonRecallWeaknessDurationTicks = Math.max(0, DRAGON_RECALL_WEAKNESS_DURATION_TICKS.get());
+                dragonRecallSlownessDurationTicks = Math.max(0, DRAGON_RECALL_SLOWNESS_DURATION_TICKS.get());
+                dragonWardCooldownTicks = Math.max(0, DRAGON_WARD_COOLDOWN_TICKS.get());
+                dragonWardDurationTicks = Math.max(120, DRAGON_WARD_DURATION_TICKS.get());
+                dragonWardHealAmount = Math.max(1.0d, DRAGON_WARD_HEAL_AMOUNT.get());
 
                 // Fire Resistance
                 fireResistanceLevel = Math.max(0, FIRE_RESISTANCE_LEVEL.get());
@@ -280,8 +426,11 @@ public class ModConfigs {
 
                 // Invisibility
                 invisibilityLevel = Math.max(0, INVISIBILITY_LEVEL.get());
-                invisibilityUpgrade = INVISIBILITY_UPGRADE.get();
-                invisibilityParticles = INVISIBILITY_PARTICLES.get();
+                invisibilityRevealTicks = Math.max(0, INVISIBILITY_REVEAL_TICKS.get());
+                invisibilityShadowStepTicks = Math.max(0, INVISIBILITY_SHADOW_STEP_TICKS.get());
+                invisibilityShadowStepLevel = Math.max(0, INVISIBILITY_SHADOW_STEP_LEVEL.get());
+                invisibilityStrikeDebuffTicks = Math.max(0, INVISIBILITY_STRIKE_DEBUFF_TICKS.get());
+                invisibilityPvpLockoutTicks = Math.max(0, INVISIBILITY_PVP_LOCKOUT_TICKS.get());
 
                 // Jump Boost
                 jumpBoostLevel = Math.max(0, JUMP_BOOST_LEVEL.get());
@@ -307,6 +456,7 @@ public class ModConfigs {
                 saturationLevel = Math.max(0, SATURATION_LEVEL.get());
                 saturationUpgrade = SATURATION_UPGRADE.get();
                 saturationParticles = SATURATION_PARTICLES.get();
+                saturationRefillInterval = Math.max(1, SATURATION_REFILL_INTERVAL.get());
 
                 // Slow Falling
                 slowFallingLevel = Math.max(0, SLOW_FALLING_LEVEL.get());
@@ -323,7 +473,7 @@ public class ModConfigs {
                 swiftnessUpgrade = SWIFTNESS_UPGRADE.get();
                 swiftnessParticles = SWIFTNESS_PARTICLES.get();
 
-                // Water Breathing
+                // Conduit Power
                 waterBreathingLevel = Math.max(0, WATER_BREATHING_LEVEL.get());
                 waterBreathingUpgrade = WATER_BREATHING_UPGRADE.get();
                 waterBreathingParticles = WATER_BREATHING_PARTICLES.get();

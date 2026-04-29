@@ -1,0 +1,9 @@
+{
+  "parent": "potionrelicsmod:block/relic_shrine_template",
+  "textures": {
+    "base": "minecraft:block/cherry_planks",
+    "trim": "minecraft:block/stripped_cherry_log",
+    "top": "minecraft:block/pink_concrete",
+    "core": "minecraft:block/pearlescent_froglight_side"
+  }
+}

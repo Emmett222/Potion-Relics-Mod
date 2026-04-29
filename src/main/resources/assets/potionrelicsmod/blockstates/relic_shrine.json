@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "theme=absorption": { "model": "potionrelicsmod:block/relic_shrine/absorption" },
+    "theme=dolphins_grace": { "model": "potionrelicsmod:block/relic_shrine/dolphins_grace" },
+    "theme=dragon": { "model": "potionrelicsmod:block/relic_shrine/dragon" },
+    "theme=fire_resistance": { "model": "potionrelicsmod:block/relic_shrine/fire_resistance" },
+    "theme=haste": { "model": "potionrelicsmod:block/relic_shrine/haste" },
+    "theme=hero_of_the_village": { "model": "potionrelicsmod:block/relic_shrine/hero_of_the_village" },
+    "theme=invisibility": { "model": "potionrelicsmod:block/relic_shrine/invisibility" },
+    "theme=jump_boost": { "model": "potionrelicsmod:block/relic_shrine/jump_boost" },
+    "theme=night_vision": { "model": "potionrelicsmod:block/relic_shrine/night_vision" },
+    "theme=regeneration": { "model": "potionrelicsmod:block/relic_shrine/regeneration" },
+    "theme=resistance": { "model": "potionrelicsmod:block/relic_shrine/resistance" },
+    "theme=saturation": { "model": "potionrelicsmod:block/relic_shrine/saturation" },
+    "theme=slow_falling": { "model": "potionrelicsmod:block/relic_shrine/slow_falling" },
+    "theme=strength": { "model": "potionrelicsmod:block/relic_shrine/strength" },
+    "theme=swiftness": { "model": "potionrelicsmod:block/relic_shrine/swiftness" },
+    "theme=water_breathing": { "model": "potionrelicsmod:block/relic_shrine/water_breathing" }
+  }
+}

@@ -21,7 +21,7 @@ public class RegenerationRelic extends BaseRelic {
     public RegenerationRelic(Properties pProperties) {
         super(pProperties,
                 MobEffects.REGENERATION,
-                70,
+                40,
                 "tooltip.potionrelicsmod.regenerationrelic");
     }
 

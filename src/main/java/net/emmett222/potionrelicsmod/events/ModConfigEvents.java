@@ -13,6 +13,15 @@ import net.minecraftforge.fml.event.config.ModConfigEvent;
 public class ModConfigEvents {
     @SubscribeEvent
     public static void onConfigLoading(ModConfigEvent.Loading event) {
-        ModConfigs.cacheConfigs();
+        if (event.getConfig().getSpec() == ModConfigs.SPEC) {
+            ModConfigs.cacheConfigs();
+        }
+    }
+
+    @SubscribeEvent
+    public static void onConfigReloading(ModConfigEvent.Reloading event) {
+        if (event.getConfig().getSpec() == ModConfigs.SPEC) {
+            ModConfigs.cacheConfigs();
+        }
     }
 }

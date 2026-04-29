@@ -19,6 +19,8 @@ public class ModCreativeModeTabs {
         .displayItems((pParameters, pOutput) -> {
             pOutput.accept(ModItems.ABSORPTIONRELIC.get());
             pOutput.accept(ModItems.DOLPHINSGRACERELIC.get());
+            pOutput.accept(ModItems.DRAGONAPPARITIONDEBUG.get());
+            pOutput.accept(ModItems.DRAGONRELIC.get());
             pOutput.accept(ModItems.FIRERESISTANCERELIC.get());
             pOutput.accept(ModItems.HASTERELIC.get());
             pOutput.accept(ModItems.HEROOFTHEVILLAGERELIC.get());

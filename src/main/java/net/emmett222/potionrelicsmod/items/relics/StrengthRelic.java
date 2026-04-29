@@ -19,7 +19,7 @@ public class StrengthRelic extends BaseRelic {
     public StrengthRelic(Properties pProperties) {
         super(pProperties,
                 MobEffects.DAMAGE_BOOST,
-                70,
+                40,
                 "tooltip.potionrelicsmod.strengthrelic");
     }
 

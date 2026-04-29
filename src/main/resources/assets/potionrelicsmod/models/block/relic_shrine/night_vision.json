@@ -1,0 +1,9 @@
+{
+  "parent": "potionrelicsmod:block/relic_shrine_template",
+  "textures": {
+    "base": "minecraft:block/end_stone_bricks",
+    "trim": "minecraft:block/calcite",
+    "top": "minecraft:block/quartz_block_top",
+    "core": "minecraft:block/glowstone"
+  }
+}

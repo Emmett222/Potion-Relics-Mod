@@ -20,7 +20,7 @@ public class HasteRelic extends BaseRelic {
     public HasteRelic(Properties pProperties) {
         super(pProperties,
                 MobEffects.DIG_SPEED,
-                70,
+                40,
                 "tooltip.potionrelicsmod.hasterelic");
     }
 

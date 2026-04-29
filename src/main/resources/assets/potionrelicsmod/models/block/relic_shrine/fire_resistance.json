@@ -1,0 +1,9 @@
+{
+  "parent": "potionrelicsmod:block/relic_shrine_template",
+  "textures": {
+    "base": "minecraft:block/magma",
+    "trim": "minecraft:block/nether_bricks",
+    "top": "minecraft:block/polished_blackstone_bricks",
+    "core": "minecraft:block/shroomlight"
+  }
+}

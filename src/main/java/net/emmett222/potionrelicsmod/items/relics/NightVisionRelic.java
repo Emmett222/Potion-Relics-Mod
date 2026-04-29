@@ -21,8 +21,18 @@ public class NightVisionRelic extends BaseRelic {
     public NightVisionRelic(Properties pProperties) {
         super(pProperties,
                 MobEffects.NIGHT_VISION,
-                280,
+                220,
                 "tooltip.potionrelicsmod.nightvisionrelic");
+    }
+
+    /**
+     * Keeps the effect above vanilla's 200-tick night-vision flicker threshold.
+     *
+     * @return The refresh threshold in ticks.
+     */
+    @Override
+    protected int getRefreshThresholdTicks() {
+        return 205;
     }
 
     /**

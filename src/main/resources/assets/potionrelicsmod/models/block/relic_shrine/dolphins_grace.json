@@ -1,0 +1,9 @@
+{
+  "parent": "potionrelicsmod:block/relic_shrine_template",
+  "textures": {
+    "base": "minecraft:block/prismarine_bricks",
+    "trim": "minecraft:block/dark_prismarine",
+    "top": "minecraft:block/prismarine",
+    "core": "minecraft:block/sea_lantern"
+  }
+}

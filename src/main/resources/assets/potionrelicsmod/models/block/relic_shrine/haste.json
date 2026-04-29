@@ -1,0 +1,9 @@
+{
+  "parent": "potionrelicsmod:block/relic_shrine_template",
+  "textures": {
+    "base": "minecraft:block/copper_block",
+    "trim": "minecraft:block/cut_copper",
+    "top": "minecraft:block/smooth_stone",
+    "core": "minecraft:block/gold_block"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "potionrelicsmod:block/relic_shrine_template",
+  "textures": {
+    "base": "minecraft:block/gold_block",
+    "trim": "minecraft:block/raw_gold_block",
+    "top": "minecraft:block/gilded_blackstone",
+    "core": "minecraft:block/glowstone"
+  }
+}

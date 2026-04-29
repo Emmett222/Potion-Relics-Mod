@@ -1,0 +1,9 @@
+{
+  "parent": "potionrelicsmod:block/relic_shrine_template",
+  "textures": {
+    "base": "minecraft:block/polished_blackstone_bricks",
+    "trim": "minecraft:block/obsidian",
+    "top": "minecraft:block/netherite_block",
+    "core": "minecraft:block/ancient_debris_top"
+  }
+}
